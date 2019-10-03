@@ -1,9 +1,9 @@
 /*************************************************************************
-                        TrajetSimple  -  description
+                        TrajetSimple  -  Interface de TrajetSimple
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 03/10/2019
+    copyright            : (C) $YEAR$ par Dorian TERBAH
+    e-mail               : dorian.terba@insa-lyon.fr
 *************************************************************************/
 
 //---- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) ----

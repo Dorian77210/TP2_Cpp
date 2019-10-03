@@ -13,21 +13,19 @@
 
 // ---------------- INTERFACE UTILISEES
 #include "Trajet.h"
-
-//----------- CONSTANTES
-const int TAILLE_PAR_DEFAUT = 10;
+#include "Collection.h"
 
 class Catalogue 
 {
     //--------------------------- PARTIE PUBLIQUE
     public: 
         //-------- Constructeurs et destructeur ----------
-        Catalogue ( int _tailleMax = TAILLE_PAR_DEFAUT );
+        Catalogue ( int _tailleMax =  );
         // Mode d'emploi 
             // La classe <Catalogue> permet de construire un catalogue de trajets
             // Le parametre "_tailleMax" permet de definir une taille maximale par defaut pour la liste de trajets
 
-        // Deconstructeur de la classe
+        // Destructeur de la classe
         virtual ~Catalogue ( );
 
         //------------------------------- Méthodes publiques
@@ -40,7 +38,7 @@ class Catalogue
         // Dans le methode, l'utilisateur pourra choisir un depart et une arrivee
 
         void Ajouter ( );
-        // La methode "Ajouter" permet 
+        // La methode "Ajouter" permet d'ajouter un trajet 
 
     protected:
         int tailleMax;

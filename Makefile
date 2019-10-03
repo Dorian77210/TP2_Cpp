@@ -9,6 +9,8 @@ CFLAGS = -Wall \
 EXE = main
 OFILES = Main.o \
 		 Catalogue.o \
+		 Collection.o \
+		 Menu.o \
 		 Trajet.o \
 		 TrajetSimple.o \
 		 TrajetCompose.o \
@@ -23,6 +25,9 @@ $(EXE): $(OFILES)
 
 Catalogue.o: Catalogue.cpp Catalogue.h Trajet.h TrajetCompose.h TrajetSimple.h
 	$(G) $(CFLAGS) -c Catalogue.cpp
+
+Collection.o: Collection.cpp Collection.h
+	$(G) $(CFLAGS) -c Collection.cpp	
 
 Main.o: Main.cpp Catalogue.h
 	$(G) $(CFLAGS) -c Main.cpp
