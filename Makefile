@@ -19,9 +19,9 @@ clean:
 	rm $(EXE) *.o
 
 $(EXE): $(OFILES)
-	$(G) $(CFLAGS) -o $(EXE) $(OFILES)
+	$(G) $(CFLAGS) -o $(EXE) $(OFILES) -D MAP
 
-Caalogue.o: Catalogue.cpp Catalogue.h Trajet.h TrajetCompose.h TrajetSimple.h
+Catalogue.o: Catalogue.cpp Catalogue.h Trajet.h TrajetCompose.h TrajetSimple.h
 	$(G) $(CFLAGS) -c Catalogue.cpp
 
 Main.o: Main.cpp Catalogue.h
