@@ -18,9 +18,9 @@ class Trajet
     //--------------------------- PARTIE PUBLIQUE
     public: 
         //-------- Constructeurs et destructeur ----------
-        Trajet ( const char* _depart, const char* _arrivee );
+        Trajet ( );
         // Mode d'emploi 
-            // La classe <Trajet> construit un trajet a partir d'un départ et d'une arrivée
+            // La classe <Trajet> construit un trajet
 
         virtual ~Trajet ( );
         // Deconstructeur de la classe
@@ -35,10 +35,17 @@ class Trajet
         // Les parametres sont "src" qui permet de definir le depart du trajet
         // et "dst" qui permet de definir l'arrivee du trajet
 
-    //------------------------- PARTIE PROTEGEE
-    protected:
-        char* depart;
-        char* arrivee;
+        virtual const char* GetVilleDepart ( ) const;
+        // La methode "GetVilleDepart" permet de recuperer la ville de depart du trajet
+        
+        virtual const char* GetVilleArrivee ( ) const;
+        // La methode "GetVilleArrivee"  permet de recuperer la ville d'arrivee du trajet
+
+        bool EstValide ( const char* _depart, const char* arrive ) const;
+        // La methode "EstValide" permet de verifier que le trajet courant est cohérent
+        // avec un depart et une arrivee
+        // Le parametre "_depart" represente le depart desiré
+        // Le parametre "_arriveee" represente l'arrivee desirée
 };
 
 #endif

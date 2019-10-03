@@ -31,7 +31,16 @@ class Catalogue
         virtual ~Catalogue ( );
 
         //------------------------------- Méthodes publiques
+        void Afficher ( ) const;
+        // La methode "Afficher" permet d'afficher le catalogue
 
+        void Rechercher ( ) const;
+        // La methode "Rechercher" permet à l'utilisateur de rechercher un trajet
+        // en fonction d'un depart et d'une arrivee
+        // Dans le methode, l'utilisateur pourra choisir un depart et une arrivee
+
+        void Ajouter ( );
+        // La methode "Ajouter" permet 
 
     protected:
         int tailleMax;

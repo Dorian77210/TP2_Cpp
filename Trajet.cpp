@@ -16,21 +16,11 @@
 #include "Trajet.h"
 
 // ----------------- Constructeurs - destructeur
-Trajet::Trajet ( const char* _depart, const char* _arrivee ) 
+Trajet::Trajet ( ) 
 {
     #ifdef MAP
         cout << "Appel au constructeur de la classe Trajet" << endl;
     #endif
-    // creation de variables pour la longueur des chaines de caracteres
-    int _departLongueur = strlen ( _depart );
-    int _arriveeLongueur = strlen ( _arrivee );
-
-    depart = new char [ _departLongueur + 1 ];
-    arrivee = new char [ _arriveeLongueur + 1 ];
-    
-    // copie des chaines de caracteres
-    strncpy ( depart, _depart, _departLongueur + 1 );
-    strncpy ( arrivee, _arrivee, _arriveeLongueur + 1 );
 }
 
 Trajet::~Trajet ( ) 
@@ -38,7 +28,12 @@ Trajet::~Trajet ( )
     #ifdef MAP
         cout << "Appel au deconstructeur de la classe Trajet" << endl;
     #endif
+}
 
-    delete [] depart;
-    delete [] arrivee;
+bool Trajet::EstValide ( const char* _depart, const char* _arrivee ) const
+{
+    const char* depart = GetVilleDepart ( );
+    const char* arrivee = GetVilleArrivee ( );
+
+    return ( strcmp ( arrivee, _arrivee ) && strcmp ( depart, _depart ) ) == 0;
 }
