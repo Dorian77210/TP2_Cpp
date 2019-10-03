@@ -7,8 +7,11 @@ CFLAGS = -Wall \
 		 -std=c++11 \
 		 
 EXE = main
-OFILES = Ensemble.o \
-		 EnsembleTest.o \
+OFILES = Main.o \
+		 Catalogue.o \
+		 Trajet.o \
+		 TrajetSimple.o \
+		 TrajetCompose.o \
 
 all: $(EXE)
 
@@ -18,8 +21,17 @@ clean:
 $(EXE): $(OFILES)
 	$(G) $(CFLAGS) -o $(EXE) $(OFILES)
 
-Ensemble.o: Ensemble.cpp Ensemble.h
-	$(G) $(CFLAGS) -c Ensemble.cpp
+Caalogue.o: Catalogue.cpp Catalogue.h Trajet.h TrajetCompose.h TrajetSimple.h
+	$(G) $(CFLAGS) -c Catalogue.cpp
 
-EnsembleTest.o: EnsembleTest.cpp Ensemble.h
-	$(G) $(CFLAGS) -c EnsembleTest.cpp
+Main.o: Main.cpp Catalogue.h
+	$(G) $(CFLAGS) -c Main.cpp
+
+Trajet.o: Trajet.cpp Trajet.h
+	$(G) $(CFLAGS) -c Trajet.cpp
+
+TrajetCompose.o: TrajetCompose.cpp TrajetCompose.h Trajet.h
+	$(G) $(CFLAGS) -c TrajetCompose.cpp
+
+TrajetSimple.o: TrajetSimple.cpp TrajetSimple.h Trajet.h
+	$(G) $(CFLAGS) -c TrajetSimple.cpp
