@@ -57,7 +57,7 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
     char    *depart;
-    char    *arrive;
+    char    *arrivee;
     char    *moyenTransport;
 };
 

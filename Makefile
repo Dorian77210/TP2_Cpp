@@ -24,19 +24,22 @@ $(EXE): $(OFILES)
 	$(G) $(CFLAGS) -o $(EXE) $(OFILES) -D MAP
 
 Catalogue.o: Catalogue.cpp Catalogue.h Trajet.h TrajetCompose.h TrajetSimple.h Collection.h
-	$(G) $(CFLAGS) -c Catalogue.cpp -o Catalogue.o
+	$(G) $(CFLAGS) -c Catalogue.cpp
 
 Collection.o: Collection.cpp Collection.h Trajet.h
-	$(G) $(CFLAGS) -c Collection.cpp -o Collection.o
+	$(G) $(CFLAGS) -c Collection.cpp
 
 Main.o: Main.cpp Catalogue.h
-	$(G) $(CFLAGS) -c Main.cpp -o Main.o
+	$(G) $(CFLAGS) -c Main.cpp
+
+Menu.o: Menu.cpp Menu.h Catalogue.h Trajet.h TrajetSimple.h TrajetCompose.h
+	$(G) $(CFLAGS) -c Menu.cpp	
 
 Trajet.o: Trajet.cpp Trajet.h
-	$(G) $(CFLAGS) -c Trajet.cpp -o Trajet.o
+	$(G) $(CFLAGS) -c Trajet.cpp
 
 TrajetCompose.o: TrajetCompose.cpp TrajetCompose.h Trajet.h
-	$(G) $(CFLAGS) -c TrajetCompose.cpp -o TrajetCompose.o
+	$(G) $(CFLAGS) -c TrajetCompose.cpp
 
 TrajetSimple.o: TrajetSimple.cpp TrajetSimple.h Trajet.h
-	$(G) $(CFLAGS) -c TrajetSimple.cpp -o TrajetSimple.o
+	$(G) $(CFLAGS) -c TrajetSimple.cpp

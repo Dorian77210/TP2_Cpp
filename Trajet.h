@@ -29,10 +29,10 @@ class Trajet
         virtual void Afficher ( ) const = 0;
         // La méthode "Afficher" permet d'afficher le trajet 
 
-        virtual const char* GetVilleDepart ( ) const;
+        virtual const char* GetVilleDepart ( ) const = 0;
         // La methode "GetVilleDepart" permet de recuperer la ville de depart du trajet
         
-        virtual const char* GetVilleArrivee ( ) const;
+        virtual const char* GetVilleArrivee ( ) const = 0;
         // La methode "GetVilleArrivee"  permet de recuperer la ville d'arrivee du trajet
 
         bool EstValide ( const char* _depart, const char* arrive ) const;

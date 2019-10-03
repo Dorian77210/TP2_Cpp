@@ -31,6 +31,8 @@ Catalogue::~Catalogue ( )
     #ifdef MAP
         cout << "Appel au destructeur du catalogue" << endl;
     #endif
+
+    delete collectionTrajets;
 }
 
 // ------------ Méthodes publiques
@@ -44,7 +46,7 @@ void Catalogue::Afficher ( ) const
     for ( i = 0; i < tailleCollection; i++ ) 
     {
         trajet = collectionTrajets->GetTrajet ( i );
-        cout << "Trajet numero " << i << ":";
+        cout << "Trajet numero " << ( i + 1 ) << ":";
         trajet->Afficher ( );
     }
 }

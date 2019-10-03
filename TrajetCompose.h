@@ -43,7 +43,7 @@ public:
     //  Renvoie un pointeur sur la ville d'arrivée du trajet (pas de copie).
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetCompose ( const Collection & unListeTrajets );
+    TrajetCompose ( Collection* unListeTrajets );
     // Mode d'emploi :
     //  Construit un trajet composé en initialisant sa liste de trajets.
 

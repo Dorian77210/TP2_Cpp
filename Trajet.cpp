@@ -1,9 +1,9 @@
 /*************************************************************************
-                           Trajet.h  -  Interface de la classe Trajet
+                        Trajet  -  description
                              -------------------
     début                : 03/10/2019
     copyright            : (C) 2019 par Dorian TERBAH
-    e-mail               : dorian.terba@insa-lyon.fr
+    e-mail               : $EMAIL$
 *************************************************************************/
 
 // ---------- Réalisation de la classe <Trajet> (fichier Trajet.cpp) -------
@@ -30,6 +30,8 @@ Trajet::~Trajet ( )
         cout << "Appel au destructeur de la classe Trajet" << endl;
     #endif
 }
+
+
 
 // ---------------- Methodes publiques
 bool Trajet::EstValide ( const char* _depart, const char* _arrivee ) const

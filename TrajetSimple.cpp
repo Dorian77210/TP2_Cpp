@@ -29,12 +29,12 @@ void    TrajetSimple::Afficher ( ) const
 }
 
 
-const char    *GetVilleDepart ( ) const
+const char*     TrajetSimple::GetVilleDepart ( ) const
 {
 	return (depart);
 }
 
-const char    *GetVilleArrivee ( ) const
+const char*     TrajetSimple::GetVilleArrivee ( ) const
 {
 	return (arrivee);
 }
@@ -48,9 +48,20 @@ TrajetSimple::TrajetSimple ( const char * villeDepart, const char * villeArrivee
     cout << villeDepart << " -> " << villeArrivee;
     cout << " par " << moyTrans <<< endl;
 #endif
-    strcpy(depart, villeDepart);
-    strcpy(arrivee, villeArrivee);
-    strcpy(moyenTransport, moyTrans);
+    int villeDepartLongueur, villeArriveeLongueur, moyenTransportLongueur;
+
+    villeDepartLongueur = strlen ( villeDepart );
+    villeArriveeLongueur = strlen ( villeArrivee );
+    moyenTransportLongueur = strlen ( moyTrans );
+
+    // alloue de la memoire pour les char*
+    depart = new char [ villeDepartLongueur + 1 ];
+    arrivee = new char [ villeArriveeLongueur + 1 ];
+    moyenTransport = new char [ moyenTransportLongueur + 1 ];
+
+    strncpy ( depart, villeDepart, villeDepartLongueur + 1 );
+    strncpy ( arrivee, villeArrivee, villeArriveeLongueur + 1 );
+    strncpy ( moyenTransport, moyTrans, moyenTransportLongueur + 1 );
 } //----- Fin de TrajetSimple
 
 
