@@ -20,7 +20,7 @@ class Catalogue
     //--------------------------- PARTIE PUBLIQUE
     public: 
         //-------- Constructeurs et destructeur ----------
-        Catalogue ( int _tailleMax =  );
+        Catalogue ( unsigned int _tailleMax =  COLLECTION_TAILLE_PAR_DEFAUT );
         // Mode d'emploi 
             // La classe <Catalogue> permet de construire un catalogue de trajets
             // Le parametre "_tailleMax" permet de definir une taille maximale par defaut pour la liste de trajets
@@ -32,18 +32,16 @@ class Catalogue
         void Afficher ( ) const;
         // La methode "Afficher" permet d'afficher le catalogue
 
-        void Rechercher ( ) const;
+        void Rechercher ( const char* depart, const char* arrivee ) const;
         // La methode "Rechercher" permet à l'utilisateur de rechercher un trajet
         // en fonction d'un depart et d'une arrivee
         // Dans le methode, l'utilisateur pourra choisir un depart et une arrivee
 
-        void Ajouter ( );
+        void Ajouter ( Trajet* trajet );
         // La methode "Ajouter" permet d'ajouter un trajet 
 
     protected:
-        int tailleMax;
-        int tailleCourante;
-        Trajet** trajets;
+        Collection* collectionTrajets;
 };
 
 #endif

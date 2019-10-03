@@ -16,13 +16,14 @@
 
 // ------ Constantes
 const unsigned int COLLECTION_TAILLE_PAR_DEFAUT = 10;
+const unsigned int FACTEUR_REDIMENSIONNEMENT = 10;
 
 class Collection 
 {
     //--------------------------- PARTIE PUBLIQUE
     public: 
         //-------- Constructeurs et destructeur ----------
-        Collection ( unsigned  tailleMax = COLLECTION_TAILLE_PAR_DEFAUT );
+        Collection ( unsigned int tailleMax = COLLECTION_TAILLE_PAR_DEFAUT );
         // Constructeur permettant de creer un collection de trajets
         
         Collection ( const Collection & collection );
@@ -33,14 +34,26 @@ class Collection
         // Destructeur d'une collection
 
         //------------------------------- Méthodes publiques
-        void Ajouter ( Trajet* trajet ) const;
+        void Ajouter ( Trajet* trajet );
         // La methode "Ajouter" permet d'ajouter un trajet dans la collection courante
 
-        Trajet GetTrajet ( unsigned int index );
+        Trajet* GetTrajet ( unsigned int index );
         // Permet de recuperer un trajet dans la collection a l'indice "index"
 
         unsigned int GetTaille ( );
         // Permet de recuperer la taille de la collection
+
+    //----------------------- PARTIE PRIVEE
+    private:
+        //--------------- Méthodes privées
+        void reajuster ( );
+        // Methode qui permet d'augementer la capacité du tableau de trajets
+
+    //----------------------- PARTIE PROTEGEE
+    protected:
+        unsigned int tailleMax;
+        unsigned int tailleCourante;
+        Trajet** trajets;
 };
 
 #endif

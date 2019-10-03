@@ -12,6 +12,7 @@
 #include <cstring>
 #include <iostream>
 
+using namespace std;
 // --------- Include personnel
 #include "Trajet.h"
 
@@ -26,10 +27,11 @@ Trajet::Trajet ( )
 Trajet::~Trajet ( ) 
 {
     #ifdef MAP
-        cout << "Appel au deconstructeur de la classe Trajet" << endl;
+        cout << "Appel au destructeur de la classe Trajet" << endl;
     #endif
 }
 
+// ---------------- Methodes publiques
 bool Trajet::EstValide ( const char* _depart, const char* _arrivee ) const
 {
     const char* depart = GetVilleDepart ( );
