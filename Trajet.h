@@ -29,12 +29,6 @@ class Trajet
         virtual void Afficher ( ) const = 0;
         // La méthode "Afficher" permet d'afficher le trajet 
 
-        virtual bool EstValide ( const char* src, const char* dst ) const = 0;
-        // La méthode "EstValide" permet de savoir si un trajet est valide ou non
-        // en fonction d'un source et d'une destination
-        // Les parametres sont "src" qui permet de definir le depart du trajet
-        // et "dst" qui permet de definir l'arrivee du trajet
-
         virtual const char* GetVilleDepart ( ) const;
         // La methode "GetVilleDepart" permet de recuperer la ville de depart du trajet
         
