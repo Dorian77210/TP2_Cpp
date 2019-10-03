@@ -11,6 +11,7 @@
 #define TRAJETCOMPOSE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include "Collection.h"
 #include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
@@ -56,7 +57,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-    Collection  listeTrajets;
+    Collection*  listeTrajets;
 };
 
 //----------------------- Autres définitions dépendantes de <TrajetCompose>

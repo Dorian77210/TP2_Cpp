@@ -37,10 +37,10 @@ class Collection
         void Ajouter ( Trajet* trajet );
         // La methode "Ajouter" permet d'ajouter un trajet dans la collection courante
 
-        Trajet* GetTrajet ( unsigned int index );
+        Trajet* GetTrajet ( unsigned int index ) const;
         // Permet de recuperer un trajet dans la collection a l'indice "index"
 
-        unsigned int GetTaille ( );
+        unsigned int GetTaille ( ) const;
         // Permet de recuperer la taille de la collection
 
     //----------------------- PARTIE PRIVEE

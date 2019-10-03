@@ -31,8 +31,6 @@ Catalogue::~Catalogue ( )
     #ifdef MAP
         cout << "Appel au destructeur du catalogue" << endl;
     #endif
-
-    delete collectionTrajets;
 }
 
 // ------------ Méthodes publiques

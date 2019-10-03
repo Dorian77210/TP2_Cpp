@@ -16,6 +16,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "TrajetCompose.h"
+#include "Collection.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -27,27 +28,27 @@ void    TrajetCompose::Afficher ( ) const
 	unsigned int    taille;
     unsigned int    i;
 
-    taille = listeTrajets.getTaille();
+    taille = listeTrajets->GetTaille();
     cout << "Trajet composé des trajets :" << endl;
     for (i = 0; i < taille; i++)
-        listeTrajets.getTrajet(i).Afficher();
+        listeTrajets->GetTrajet(i).Afficher();
 }
 
 
 const char    *TrajetCompose::GetVilleDepart ( ) const
 {
-	return (listeTrajets.getTrajet(0).GetVilleDepart());
+	return (listeTrajets.GetTrajet(0).GetVilleDepart());
 }
 
 const char    *TrajetCompose::GetVilleArrivee ( ) const
 {
-	return (listeTrajets.getTrajet(listeTrajets.getTaille() - 1).GetVilleArrivee());
+	return (listeTrajets.GetTrajet(listeTrajets.GetTaille() - 1).GetVilleArrivee());
 }
 
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetCompose::TrajetCompose ( const Collection & uneListeTrajets )
-    : listeTrajets ( Collection(uneListeTrajets) )
+    : listeTrajets ( uneListeTrajets )
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetCompose> : ";
@@ -60,7 +61,6 @@ TrajetCompose::~TrajetCompose ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetCompose>" << endl;
 #endif
-    delete listeTrajets;
 } //----- Fin de ~TrajetCompose
 
 

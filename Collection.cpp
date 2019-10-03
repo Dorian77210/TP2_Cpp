@@ -45,7 +45,7 @@ Collection::~Collection ( )
         cout << "Appel au destructeur de la classe Collection" << endl;
     #endif
     
-    int i;
+    unsigned int i;
 
     // supprime tous les trajets dans la collection
     for ( i = 0; i < tailleCourante; i++ ) 
@@ -67,20 +67,20 @@ void Collection::Ajouter ( Trajet* trajet )
     trajets [ ++tailleCourante ] = trajet;
 }
 
-Trajet* Collection::GetTrajet ( unsigned int index )
+Trajet* Collection::GetTrajet ( unsigned int index ) const
 {
     return trajets [ index ];
 }
 
-unsigned int Collection::GetTaille ( )
-{
+unsigned int Collection::GetTaille ( ) const 
+{ 
     return tailleCourante;
 }
 
 // -------------- Méthodes privées
 void Collection::reajuster ( ) 
 {
-    int i;
+    unsigned int i;
     // reajustement de la taille
     tailleMax += FACTEUR_REDIMENSIONNEMENT;
     Trajet** _trajets = new Trajet* [ tailleMax ];
