@@ -17,47 +17,50 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "TrajetSimple.h"
-#include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type TrajetSimple::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-TrajetSimple & TrajetSimple::operator = ( const TrajetSimple & unTrajetSimple )
-// Algorithme :
-//
+void    TrajetSimple::Afficher ( ) const
 {
-} //----- Fin de operator =
+	cout << depart << " -> " << arrivee << " par " << moyenTransport << endl;
+}
+
+
+const char    *GetVilleDepart ( ) const
+{
+	return (depart);
+}
+
+const char    *GetVilleArrivee ( ) const
+{
+	return (arrivee);
+}
 
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <TrajetSimple>" << endl;
 #endif
+    strcpy(depart, unTrajetSimple.depart);
+    strcpy(arrivee, unTrajetSimple.arrivee);
+    strcpy(moyenTransport, unTrajetSimple.moyenTransport);
 } //----- Fin de TrajetSimple (constructeur de copie)
 
 
 TrajetSimple::TrajetSimple ( const char * villeDepart, const char * villeArrivee, const char * moyTrans )
-	: Trajet (villeDepart, villeArrivee)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple> : ";
     cout << villeDepart << " -> " << villeArrivee;
-    cout << ", " << moyTrans <<< endl;
+    cout << " par " << moyTrans <<< endl;
 #endif
+    strcpy(depart, villeDepart);
+    strcpy(arrivee, villeArrivee);
     strcpy(moyenTransport, moyTrans);
 } //----- Fin de TrajetSimple
 
@@ -67,6 +70,8 @@ TrajetSimple::~TrajetSimple ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
+    delete depart;
+    delete arrivee;
     delete moyenTransport;
 } //----- Fin de ~TrajetSimple
 
