@@ -1,68 +1,67 @@
 /*************************************************************************
-                        TrajetSimple  -  description
+                        TrajetCompose  -  description
                              -------------------
     début                : 03/10/2019
     copyright            : (C) 2019 par Alexandre DUFOUR
     e-mail               : alexandre.dufour@insa-lyon.fr
 *************************************************************************/
 
-//-- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) --
+//-- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include <cstring>
 
 //------------------------------------------------------ Include personnel
-#include "TrajetSimple.h"
+#include "TrajetCompose.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void    TrajetSimple::Afficher ( ) const
+void    TrajetCompose::Afficher ( ) const
 {
-	cout << depart << " -> " << arrivee << " par " << moyenTransport << endl;
+	unsigned int    taille;
+    unsigned int    i;
+
+    taille = listeTrajets.getTaille();
+    cout << "Trajet composé des trajets :" << endl;
+    for (i = 0; i < taille; i++)
+        listeTrajets.getTrajet(i).Afficher();
 }
 
 
-const char    *GetVilleDepart ( ) const
+const char    *TrajetCompose::GetVilleDepart ( ) const
 {
-	return (depart);
+	return (listeTrajets.getTrajet(0).GetVilleDepart());
 }
 
-const char    *GetVilleArrivee ( ) const
+const char    *TrajetCompose::GetVilleArrivee ( ) const
 {
-	return (arrivee);
+	return (listeTrajets.getTrajet(listeTrajets.getTaille() - 1).GetVilleArrivee());
 }
 
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetSimple::TrajetSimple ( const char * villeDepart, const char * villeArrivee, const char * moyTrans )
+TrajetCompose::TrajetCompose ( const Collection & uneListeTrajets )
+    : listeTrajets ( Collection(uneListeTrajets) )
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <TrajetSimple> : ";
-    cout << villeDepart << " -> " << villeArrivee;
-    cout << " par " << moyTrans <<< endl;
+    cout << "Appel au constructeur de <TrajetCompose> : ";
 #endif
-    strcpy(depart, villeDepart);
-    strcpy(arrivee, villeArrivee);
-    strcpy(moyenTransport, moyTrans);
-} //----- Fin de TrajetSimple
+} //----- Fin de TrajetCompose
 
 
-TrajetSimple::~TrajetSimple ( )
+TrajetCompose::~TrajetCompose ( )
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <TrajetSimple>" << endl;
+    cout << "Appel au destructeur de <TrajetCompose>" << endl;
 #endif
-    delete depart;
-    delete arrivee;
-    delete moyenTransport;
-} //----- Fin de ~TrajetSimple
+    delete listeTrajets;
+} //----- Fin de ~TrajetCompose
 
 
 //------------------------------------------------------------------ PRIVE
