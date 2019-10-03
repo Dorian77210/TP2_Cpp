@@ -1,14 +1,14 @@
 /*************************************************************************
-                        TrajetSimple  -  description
+                        TrajetCompose  -  description
                              -------------------
     début                : 03/10/2019
     copyright            : (C) 2019 par Alexandre DUFOUR
     e-mail               : alexandre.dufour@insa-lyon.fr
 *************************************************************************/
 
-//---- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) ----
-#if ! defined ( TRAJETSIMPLE_H )
-#define TRAJETSIMPLE_H
+//--- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ---
+#if ! defined ( TRAJETCOMPOSE_H )
+#define TRAJETCOMPOSE_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
@@ -18,12 +18,12 @@
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <TrajetSimple>
+// Rôle de la classe <TrajetCompose>
 //
 //
 //------------------------------------------------------------------------
 
-class TrajetSimple : public Trajet
+class TrajetCompose : public Trajet
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -42,11 +42,11 @@ public:
     //  Renvoie un pointeur sur la ville d'arrivée du trajet (pas de copie).
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetSimple ( const char * villeDepart, const char * villeArrivee, const char * moyTrans );
+    TrajetCompose ( const Collection & unListeTrajets );
     // Mode d'emploi :
-    //  Construit un trajet simple en initialisant ses attributs.
+    //  Construit un trajet composé en initialisant sa liste de trajets.
 
-    virtual ~TrajetSimple ( );
+    virtual ~TrajetCompose ( );
     // Mode d'emploi :
     //  Détruit en profondeur le trajet simple.
 
@@ -56,12 +56,10 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-    char    *depart;
-    char    *arrive;
-    char    *moyenTransport;
+    Collection  listeTrajets;
 };
 
-//----------------------- Autres définitions dépendantes de <TrajetSimple>
+//----------------------- Autres définitions dépendantes de <TrajetCompose>
 
-#endif // TRAJETSIMPLE_H
+#endif // TRAJETCOMPOSE_H
 
