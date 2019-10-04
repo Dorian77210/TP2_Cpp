@@ -1,10 +1,11 @@
 
 #include <iostream>
 
-#include "Catalogue.h"
+#include "Menu.h"
 
 int main(int argc, const char** argv) 
 {
-
+    Menu menu;
+    menu.Run ( );
     return 0;
 }

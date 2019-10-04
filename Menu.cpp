@@ -11,6 +11,8 @@
 using namespace std;
 // ----------- INCLUDES SYSTEMES
 #include <iostream>
+#include <cstring>
+
 // ---------- Includes personnels
 #include "Menu.h"
 #include "Catalogue.h"
@@ -21,11 +23,19 @@ using namespace std;
 // ---------------- Constructeurs - destructeur
 Menu::Menu ( void ) 
 {
+    #ifdef MAP
+        cout << "Appel au constructeur de Menu" << endl;
+    #endif
+
     catalogue = new Catalogue ( );
 }
 
 Menu::~Menu ( )
 {
+    #ifdef MAP
+        cout << "Appel au destructeur du Menu" << endl;
+    #endif
+
     delete catalogue;
 }
 
@@ -39,6 +49,10 @@ void Menu::Run ( void )
     {
         afficherMenu ( );
         cin >> choix;
+
+        if( choix == AFFICHAGE_CATALOGUE ) catalogue->Afficher ( );
+        else if ( choix == AJOUTER_TRAJET ) ajouterTrajet ( );
+        else if ( choix == QUITTER_APPLICATION ) loop = false;
     }
 }
 
@@ -48,8 +62,9 @@ void Menu::afficherMenu ( void ) const
 {
     cout << "Option 1 : Ajouter un trajet" << endl;
     cout << "Option 2 : Afficher le catalogue" << endl;
-    cout << "Option 3 : Rechercher un parcours" <<endl;
-    cout << "Choisissez l'option qui vous convient" << endl;
+    cout << "Option 3 : Rechercher un parcours" << endl;
+    cout << "Option 4 : Quitter application" << endl;
+    cout << "Choisissez l'option qui vous convient : ";
 }
 
 void Menu::rechercherTrajet ( void ) const
@@ -59,10 +74,14 @@ void Menu::rechercherTrajet ( void ) const
 
 void Menu::ajouterTrajet ( void ) 
 {
-    char* depart, *arrivee;
+    char* depart, *arrivee, *moyenTransport;
     Trajet* trajet;
-    Collection* collectionTrajets;
     int choice = 0;
+
+    // allocation des chaines de caracteres
+    depart = new char [ MAX_TAILLE_STRING ];
+    arrivee = new char [ MAX_TAILLE_STRING ];
+    moyenTransport = new char [ MAX_TAILLE_STRING ];
 
     cout << "Option 1 : Création d'un trajet simple" << endl;
     cout << "Option 2 : Création d'un trajet composé" << endl;
@@ -75,14 +94,6 @@ void Menu::ajouterTrajet ( void )
 
     if ( choice == TRAJET_SIMPLE_OPTION ) 
     {
-        // trajet simple
-        char* moyenTransport;
-        // allocation des char*
-
-        depart = new char [ MAX_TAILLE_STRING ];
-        arrivee = new char [ MAX_TAILLE_STRING ];
-        moyenTransport = new char [ MAX_TAILLE_STRING ];
-
         // edition du depart
         cout << "Départ : ";
         cin >> depart;
@@ -101,9 +112,53 @@ void Menu::ajouterTrajet ( void )
     } else 
     {
         // trajet composé
-        int nbrTrajets, i;
+        unsigned int nbrTrajets, i;
+        cout << "Combien de trajets voulez vous créer pour votre trajet composé : ";
+        cin >> nbrTrajets;
 
-        // TODOD
+        Collection collectionTrajets ( nbrTrajets );
+
+        for ( i = 0; i < nbrTrajets; i++ )
+        {   
+            // si ce n'est pas la premiere iteration, il faut voir que la ville de depart correspond a la
+            // ville d'arrivee precedente
+
+            cout << "Départ : ";
+            if ( i != 0 ) 
+            {
+                while ( 1 ) 
+                {
+                    cin >> depart;
+                    if ( strcmp ( depart, arrivee ) == 0 ) break;
+                    cout << "Le nom de la ville de depart ne correspond pas a la ville d'arrivée précédente. Veuillez resaisir votre ville de départ." << endl;
+                }
+            } else
+            {
+                cin >> depart;
+            }
+
+            // edition de la ville d'arrivee
+            cout << "Arrivée : ";
+            cin >> arrivee;
+
+            // edition du moyen de transport
+            cout << "Moyen de transport :";
+            cin >> moyenTransport;
+
+            trajet = new TrajetSimple ( depart, arrivee, moyenTransport );
+
+            // ajout du trajet dans la collection
+            collectionTrajets.Ajouter ( trajet );
+
+            // reallocation des chaines de caracteres
+            arrivee = new char [ MAX_TAILLE_STRING ];
+            depart = new char [ MAX_TAILLE_STRING ];
+            moyenTransport = new char [ MAX_TAILLE_STRING ];
+
+        }
+
+        // creation du trajet compose
+        trajet = new TrajetCompose ( collectionTrajets );
     }
 }
 

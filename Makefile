@@ -5,6 +5,7 @@ CFLAGS = -Wall \
 		 -ansi \
 		 -pedantic \
 		 -std=c++11 \
+		 -DMAP \
 		 
 EXE = main
 OFILES = Main.o \
@@ -21,7 +22,7 @@ clean:
 	rm $(EXE) *.o
 
 $(EXE): $(OFILES)
-	$(G) $(CFLAGS) -o $(EXE) $(OFILES) -D MAP
+	$(G) $(CFLAGS) -o $(EXE) $(OFILES)
 
 Catalogue.o: Catalogue.cpp Catalogue.h Trajet.h TrajetCompose.h TrajetSimple.h Collection.h
 	$(G) $(CFLAGS) -c Catalogue.cpp

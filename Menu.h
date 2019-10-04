@@ -15,9 +15,10 @@
 
 // ---------- CONSTANTES
 // constantes pour le menu principal
-const unsigned int AJOUTER_TRAJET  = 1;
-const unsigned int AFFICHAGE_CATALOGUE = 2;
-const unsigned int RECHERCHER_PARCOURS = 3;
+const int AJOUTER_TRAJET  = 1;
+const int AFFICHAGE_CATALOGUE = 2;
+const int RECHERCHER_PARCOURS = 3;
+const int QUITTER_APPLICATION = 4;
 
 // constantes pour le choix entre trajet simple et trajet composé
 const unsigned int TRAJET_SIMPLE_OPTION = 1;

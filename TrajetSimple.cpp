@@ -46,7 +46,7 @@ TrajetSimple::TrajetSimple ( const char * villeDepart, const char * villeArrivee
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple> : ";
     cout << villeDepart << " -> " << villeArrivee;
-    cout << " par " << moyTrans <<< endl;
+    cout << " par " << moyTrans << endl;
 #endif
     int villeDepartLongueur, villeArriveeLongueur, moyenTransportLongueur;
 
@@ -67,9 +67,9 @@ TrajetSimple::TrajetSimple ( const char * villeDepart, const char * villeArrivee
 
 TrajetSimple::~TrajetSimple ( )
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <TrajetSimple>" << endl;
-#endif
+    #ifdef MAP
+        cout << "Appel au destructeur de <TrajetSimple>" << endl;
+    #endif
     delete depart;
     delete arrivee;
     delete moyenTransport;

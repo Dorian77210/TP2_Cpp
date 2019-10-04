@@ -9,6 +9,8 @@
 //-- Réalisation de la classe <Collection> (fichier Collection.cpp) --
 
 using namespace std;
+#include <iostream>
+
 // -------- Include personnel
 #include "Collection.h"
 #include "Trajet.h"
@@ -20,7 +22,7 @@ Collection::Collection ( unsigned int _tailleMax )
     #ifdef MAP
         cout << "Appel au constructeur de la classe Collection" << endl;
     #endif
-
+    
     trajets = new Trajet* [ tailleMax ];
 }
 
@@ -59,12 +61,14 @@ Collection::~Collection ( )
 // ---------------- Méthodes publiques
 void Collection::Ajouter ( Trajet* trajet )
 {
+
     if ( tailleCourante == tailleMax ) 
     {
         reajuster ( );
     }
 
-    trajets [ ++tailleCourante ] = trajet;
+    trajets [ tailleCourante ] = trajet;
+    tailleCourante++;
 }
 
 Trajet* Collection::GetTrajet ( unsigned int index ) const

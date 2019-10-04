@@ -28,26 +28,26 @@ void    TrajetCompose::Afficher ( ) const
 	unsigned int    taille;
     unsigned int    i;
 
-    taille = listeTrajets->GetTaille();
+    taille = listeTrajets.GetTaille();
     cout << "Trajet composé des trajets :" << endl;
     for (i = 0; i < taille; i++)
-        listeTrajets->GetTrajet(i)->Afficher();
+        listeTrajets.GetTrajet(i)->Afficher();
 }
 
 
 const char    *TrajetCompose::GetVilleDepart ( ) const
 {
-	return (listeTrajets->GetTrajet(0)->GetVilleDepart());
+	return (listeTrajets.GetTrajet(0)->GetVilleDepart());
 }
 
 const char    *TrajetCompose::GetVilleArrivee ( ) const
 {
-	return (listeTrajets->GetTrajet(listeTrajets->GetTaille() - 1)->GetVilleArrivee());
+	return (listeTrajets.GetTrajet(listeTrajets.GetTaille() - 1)->GetVilleArrivee());
 }
 
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetCompose::TrajetCompose ( Collection* uneListeTrajets )
+TrajetCompose::TrajetCompose ( Collection & uneListeTrajets )
 {
     #ifdef MAP
         cout << "Appel au constructeur de <TrajetCompose> : ";
