@@ -23,7 +23,7 @@ Catalogue::Catalogue ( unsigned int _tailleMax )
     #ifdef MAP
         cout << "Appel au constructeur du catalogue" << endl;
     #endif
-    collectionTrajets = Collection ( _tailleMax );
+    collectionTrajets = new Collection ( _tailleMax );
 }
 
 Catalogue::~Catalogue ( ) 
@@ -31,6 +31,8 @@ Catalogue::~Catalogue ( )
     #ifdef MAP
         cout << "Appel au destructeur du catalogue" << endl;
     #endif
+
+    delete collectionTrajets;
 }
 
 // ------------ Méthodes publiques
@@ -39,7 +41,7 @@ void Catalogue::Afficher ( ) const
     unsigned int i, tailleCollection;
     Trajet* trajet;
 
-    tailleCollection = collectionTrajets.GetTaille ( );
+    tailleCollection = collectionTrajets->GetTaille ( );
 
     if ( tailleCollection == 0 ) 
     {
@@ -50,7 +52,7 @@ void Catalogue::Afficher ( ) const
 
     for ( i = 0; i < tailleCollection; i++ ) 
     {
-        trajet = collectionTrajets.GetTrajet ( i );
+        trajet = collectionTrajets->GetTrajet ( i );
         cout << "Trajet numero " << ( i + 1 ) << ":";
         trajet->Afficher ( );
     }
@@ -58,10 +60,30 @@ void Catalogue::Afficher ( ) const
 
 void Catalogue::Rechercher ( const char* depart, const char* arrivee ) const 
 {
+    Trajet* trajet;
+    unsigned int i, tailleCollection;
+    bool trajetsTrouves = false;
 
+    tailleCollection = collectionTrajets->GetTaille ( );
+
+    for ( i = 0; i < tailleCollection; i++ ) 
+    {
+        trajet = collectionTrajets->GetTrajet ( i );
+        if ( trajet->EstValide ( depart, arrivee ) ) 
+        {
+            if ( !trajetsTrouves ) trajetsTrouves = true;
+            cout << " - ";
+            trajet->Afficher ( );
+        }
+    }
+
+    if ( !trajetsTrouves ) 
+    {
+        cout << "Aucun trajet n'a été trouvé pour votre demande." << endl;
+    }
 }
 
 void Catalogue::Ajouter ( Trajet* trajet ) 
 {
-    collectionTrajets.Ajouter ( trajet );
+    collectionTrajets->Ajouter ( trajet );
 }

@@ -1,5 +1,8 @@
 /*************************************************************************
                            Trajet.h  -  Interface de la classe Trajet
+                            La classe <Trajet> est une classe qui represente un parcours
+                            et qui sert de base pour les trajets simples et 
+                            composés.                           
                              -------------------
     début                : 03/10/2019
     copyright            : (C) 2019 par Dorian TERBAH
@@ -28,12 +31,15 @@ class Trajet
         //------------------------------- Méthodes publiques
         virtual void Afficher ( ) const = 0;
         // La méthode "Afficher" permet d'afficher le trajet 
+        // Cette methode a obligation d'etre redefinie dans les classes enfants
 
         virtual const char* GetVilleDepart ( ) const = 0;
         // La methode "GetVilleDepart" permet de recuperer la ville de depart du trajet
+        // Cette methode a obligation d'etre redefinie dans les classes enfants
         
         virtual const char* GetVilleArrivee ( ) const = 0;
         // La methode "GetVilleArrivee"  permet de recuperer la ville d'arrivee du trajet
+        // Cette methode a obligation d'etre redefinie dans les classes enfants
 
         bool EstValide ( const char* _depart, const char* arrive ) const;
         // La methode "EstValide" permet de verifier que le trajet courant est cohérent

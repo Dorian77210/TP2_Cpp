@@ -52,6 +52,7 @@ void Menu::Run ( void )
 
         if( choix == AFFICHAGE_CATALOGUE ) catalogue->Afficher ( );
         else if ( choix == AJOUTER_TRAJET ) ajouterTrajet ( );
+        else if ( choix == RECHERCHER_PARCOURS ) rechercherTrajet ( );
         else if ( choix == QUITTER_APPLICATION ) loop = false;
     }
 }
@@ -69,7 +70,16 @@ void Menu::afficherMenu ( void ) const
 
 void Menu::rechercherTrajet ( void ) const
 {
+    char* arrivee = new char [ MAX_TAILLE_STRING ], *depart = new char [ MAX_TAILLE_STRING ];
+    cout << "Depart : ";
+    cin >> depart;
 
+    cout << "Arrivee : ";
+    cin >> arrivee;
+
+    cout << "Voici la liste des trajets correspondants : " << endl;
+    // recherche de tous les trajets possibles
+    catalogue->Rechercher ( depart, arrivee );
 }
 
 void Menu::ajouterTrajet ( void ) 
@@ -108,7 +118,6 @@ void Menu::ajouterTrajet ( void )
 
         // creation du trajet simple, puis insertion dans le catalogue
         trajet = new TrajetSimple ( depart, arrivee, moyenTransport );
-        catalogue->Ajouter ( trajet );
     } else 
     {
         // trajet composé
@@ -116,7 +125,7 @@ void Menu::ajouterTrajet ( void )
         cout << "Combien de trajets voulez vous créer pour votre trajet composé : ";
         cin >> nbrTrajets;
 
-        Collection collectionTrajets ( nbrTrajets );
+        Collection* collectionTrajets  = new Collection ( nbrTrajets );
 
         for ( i = 0; i < nbrTrajets; i++ )
         {   
@@ -134,6 +143,7 @@ void Menu::ajouterTrajet ( void )
                 }
             } else
             {
+                arrivee = new char [ MAX_TAILLE_STRING ];
                 cin >> depart;
             }
 
@@ -142,16 +152,15 @@ void Menu::ajouterTrajet ( void )
             cin >> arrivee;
 
             // edition du moyen de transport
-            cout << "Moyen de transport :";
+            cout << "Moyen de transport : ";
             cin >> moyenTransport;
 
             trajet = new TrajetSimple ( depart, arrivee, moyenTransport );
 
             // ajout du trajet dans la collection
-            collectionTrajets.Ajouter ( trajet );
+            collectionTrajets->Ajouter ( trajet );
 
             // reallocation des chaines de caracteres
-            arrivee = new char [ MAX_TAILLE_STRING ];
             depart = new char [ MAX_TAILLE_STRING ];
             moyenTransport = new char [ MAX_TAILLE_STRING ];
 
@@ -160,6 +169,8 @@ void Menu::ajouterTrajet ( void )
         // creation du trajet compose
         trajet = new TrajetCompose ( collectionTrajets );
     }
+
+    catalogue->Ajouter ( trajet );
 }
 
 void Menu::afficherCatalogue ( void ) const

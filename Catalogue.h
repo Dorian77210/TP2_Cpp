@@ -41,7 +41,7 @@ class Catalogue
         // La methode "Ajouter" permet d'ajouter un trajet 
 
     protected:
-        Collection collectionTrajets;
+        Collection* collectionTrajets;
 };
 
 #endif
