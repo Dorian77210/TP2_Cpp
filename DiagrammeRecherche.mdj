@@ -1985,6 +1985,38 @@
 									"$ref": "AAAAAAFtm03FUcAwzB4="
 								}
 							}
+						},
+						{
+							"_type": "UMLAssociation",
+							"_id": "AAAAAAFtnKWeKSC8g9o=",
+							"_parent": {
+								"$ref": "AAAAAAFtm03FUcAwzB4="
+							},
+							"name": "items",
+							"end1": {
+								"_type": "UMLAssociationEnd",
+								"_id": "AAAAAAFtnKWeKiC99lc=",
+								"_parent": {
+									"$ref": "AAAAAAFtnKWeKSC8g9o="
+								},
+								"reference": {
+									"$ref": "AAAAAAFtm03FUcAwzB4="
+								},
+								"multiplicity": "1"
+							},
+							"end2": {
+								"_type": "UMLAssociationEnd",
+								"_id": "AAAAAAFtnKWeKiC+srM=",
+								"_parent": {
+									"$ref": "AAAAAAFtnKWeKSC8g9o="
+								},
+								"reference": {
+									"$ref": "AAAAAAFtnKV7cyA+PH4="
+								},
+								"aggregation": "shared",
+								"multiplicity": "*"
+							},
+							"visibility": "private"
 						}
 					],
 					"attributes": [
@@ -2236,6 +2268,105 @@
 								}
 							},
 							"visibility": "private"
+						}
+					]
+				},
+				{
+					"_type": "UMLClass",
+					"_id": "AAAAAAFtnKV7cyA+PH4=",
+					"_parent": {
+						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+					},
+					"name": "NoeudCollection",
+					"attributes": [
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFtnKZkHiKJ+2o=",
+							"_parent": {
+								"$ref": "AAAAAAFtnKV7cyA+PH4="
+							},
+							"name": "tailleMax",
+							"visibility": "private",
+							"type": "unsigned int"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAFtnKZmeSLasRs=",
+							"_parent": {
+								"$ref": "AAAAAAFtnKV7cyA+PH4="
+							},
+							"name": "tailleCourante",
+							"visibility": "private",
+							"type": "unsigned int"
+						}
+					],
+					"operations": [
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFtnKanmiPwoGg=",
+							"_parent": {
+								"$ref": "AAAAAAFtnKV7cyA+PH4="
+							},
+							"name": "Ajouter",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFtnKbVLyURPjQ=",
+									"_parent": {
+										"$ref": "AAAAAAFtnKanmiPwoGg="
+									},
+									"name": "Trajet* trajet",
+									"type": ""
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFtnKbVLyUSUuY=",
+									"_parent": {
+										"$ref": "AAAAAAFtnKanmiPwoGg="
+									},
+									"type": "void",
+									"direction": "return"
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFtnKap0SRBpRE=",
+							"_parent": {
+								"$ref": "AAAAAAFtnKV7cyA+PH4="
+							},
+							"name": "reajuster",
+							"visibility": "private",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFtnKb5KSV/c4Q=",
+									"_parent": {
+										"$ref": "AAAAAAFtnKap0SRBpRE="
+									},
+									"type": "void",
+									"direction": "return"
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFtnKascSSSCFc=",
+							"_parent": {
+								"$ref": "AAAAAAFtnKV7cyA+PH4="
+							},
+							"name": "Afficher",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFtnKctdSaCsaQ=",
+									"_parent": {
+										"$ref": "AAAAAAFtnKascSSSCFc="
+									},
+									"type": "void",
+									"direction": "return"
+								}
+							]
 						}
 					]
 				}

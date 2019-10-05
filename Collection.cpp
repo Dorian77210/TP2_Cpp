@@ -16,14 +16,14 @@ using namespace std;
 #include "Trajet.h"
 
 // ----------------- Constructeurs - destructeur
-Collection::Collection ( unsigned int _tailleMax ) 
+Collection::Collection ( unsigned int _tailleMax, bool _doitSupprimer ) 
     : tailleMax ( _tailleMax ), tailleCourante ( 0 )
 {
     #ifdef MAP
         cout << "Appel au constructeur de la classe Collection" << endl;
     #endif
     
-    trajets = new Trajet* [ tailleMax ];
+    trajets = new const Trajet* [ tailleMax ];
 }
 
 Collection::Collection ( const Collection & collection ) 
@@ -33,7 +33,7 @@ Collection::Collection ( const Collection & collection )
         cout << "Appel au constructeur de copie de la classe Collection" << endl;
     #endif
 
-    trajets = new Trajet* [ tailleMax ];
+    trajets = new const Trajet* [ tailleMax ];
 
     for ( tailleCourante = 0; tailleCourante < collection.tailleCourante; tailleCourante++ ) 
     {
@@ -47,19 +47,22 @@ Collection::~Collection ( )
         cout << "Appel au destructeur de la classe Collection" << endl;
     #endif
     
-    unsigned int i;
-
-    // supprime tous les trajets dans la collection
-    for ( i = 0; i < tailleCourante; i++ ) 
+    if ( doitSupprimer ) 
     {
-        delete trajets [ i ];
-    }
+        unsigned int i;
 
-    delete [] trajets;
+        // supprime tous les trajets dans la collection
+        for ( i = 0; i < tailleCourante; i++ ) 
+        {
+            delete trajets [ i ];
+        }
+
+        delete [] trajets;
+    }
 }
 
 // ---------------- Méthodes publiques
-void Collection::Ajouter ( Trajet* trajet )
+void Collection::Ajouter ( const Trajet* trajet )
 {
 
     if ( tailleCourante == tailleMax ) 
@@ -71,7 +74,7 @@ void Collection::Ajouter ( Trajet* trajet )
     tailleCourante++;
 }
 
-Trajet* Collection::GetTrajet ( unsigned int index ) const
+const Trajet* Collection::GetTrajet ( unsigned int index ) const
 {
     return trajets [ index ];
 }
@@ -87,7 +90,7 @@ void Collection::reajuster ( )
     unsigned int i;
     // reajustement de la taille
     tailleMax += FACTEUR_REDIMENSIONNEMENT;
-    Trajet** _trajets = new Trajet* [ tailleMax ];
+    const Trajet** _trajets = new const Trajet* [ tailleMax ];
 
     for ( i = 0; i < tailleCourante; i++ )
     {

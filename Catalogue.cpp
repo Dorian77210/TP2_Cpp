@@ -40,7 +40,7 @@ Catalogue::~Catalogue ( )
 void Catalogue::Afficher ( ) const 
 {
     unsigned int i, tailleCollection;
-    Trajet* trajet;
+    const Trajet* trajet;
 
     tailleCollection = collectionTrajets->GetTaille ( );
 
@@ -67,7 +67,7 @@ const Collection* Catalogue::GetCatalogue ( ) const
 
 void Catalogue::Rechercher ( const char* depart, const char* arrivee ) const 
 {
-    Trajet* trajet;
+    const Trajet* trajet;
     unsigned int i, tailleCollection;
     bool trajetsTrouves = false;
 

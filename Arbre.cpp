@@ -40,7 +40,7 @@ void Arbre::RechercherTrajetsPossibles ( const Catalogue* catalogue, const char*
 {
     const Collection* collectionTrajets = catalogue->GetCatalogue ( );
     unsigned int tailleCatalogue = collectionTrajets->GetTaille ( ), i;
-    Trajet* trajet;
+    const Trajet* trajet;
     Noeud* voisin;
 
     // chercher tous les trajets qui ont comme depart "depart"
@@ -60,10 +60,11 @@ void Arbre::RechercherTrajetsPossibles ( const Catalogue* catalogue, const char*
 
         }
 
-        if ( strcmp ( arrivee, trajet->GetVilleArrivee ( ) ) == 0 && voisin != NOEUD_NULL ) 
+        if ( strcmp ( arrivee, trajet->GetVilleArrivee ( ) ) == 0 && strcmp ( depart, trajet->GetVilleDepart ( ) ) == 0 ) 
         {
             // trajet qui correspond directement au trajet desire
             voisin->SetEstValide ( true );
+            voisin->SetEstTrajetDirect ( true );
         }
     }
 

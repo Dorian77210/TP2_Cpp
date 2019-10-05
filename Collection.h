@@ -23,8 +23,10 @@ class Collection
     //--------------------------- PARTIE PUBLIQUE
     public: 
         //-------- Constructeurs et destructeur ----------
-        Collection ( unsigned int tailleMax = COLLECTION_TAILLE_PAR_DEFAUT );
+        Collection ( unsigned int tailleMax = COLLECTION_TAILLE_PAR_DEFAUT, bool _doitSupprimer = true );
         // Constructeur permettant de creer un collection de trajets
+        // Le parametre "tailleMax" definit la taille maximale de la collection
+        // Le parametre "_doitSupprimer" permet de savoir si les trajets doivent etre supprimer ou non
         
         Collection ( const Collection & collection );
         // Constructeur de copie pour la classe Collection
@@ -34,10 +36,10 @@ class Collection
         // Destructeur d'une collection
 
         //------------------------------- Méthodes publiques
-        void Ajouter ( Trajet* trajet );
+        void Ajouter ( const Trajet* trajet );
         // La methode "Ajouter" permet d'ajouter un trajet dans la collection courante
 
-        Trajet* GetTrajet ( unsigned int index ) const;
+        const Trajet* GetTrajet ( unsigned int index ) const;
         // Permet de recuperer un trajet dans la collection a l'indice "index"
 
         unsigned int GetTaille ( ) const;
@@ -53,7 +55,8 @@ class Collection
     protected:
         unsigned int tailleMax;
         unsigned int tailleCourante;
-        Trajet** trajets;
+        bool doitSupprimer;
+        Trajet const ** trajets;
 };
 
 #endif

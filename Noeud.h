@@ -26,7 +26,7 @@ class Noeud
     //--------------------------------- PARTIE PUBLIQUE
     public:
         // ------------ Constructeur et destructeur -----------
-        Noeud ( const Trajet* _trajetAssocie, Noeud* _parent = NOEUD_NULL );
+        Noeud ( const Trajet* _trajetAssocie, Noeud* _parent = NOEUD_NULL, bool _estTrajetDirect = false );
         // Mode d'emploi
             // Le parametre "_trajetAssocie" est le trajet que le noeud courant stockera
             // Le parametre "parent" represente le parent du noeud courant dans un arbre
@@ -59,6 +59,10 @@ class Noeud
         // La methode "SetEstValide" permet de modifier l'attribut "estValide"
         // Le parametre "_estValide" correspond a la nouvelle valeur de l'attribut "estValide"
 
+        void SetEstTrajetDirect ( bool _estTrajetDirect );
+        // La methode "SetEstTrajetDirect" permet de modifier l'attribut "estTrajetDirect"
+        // Le parametre "_estTrajetDirect" correspond a la nouvelle valeur de l'attribut "estTrajetDirect"
+
     // ------------------------------- PARTIE PROTEGEE
     private:
 
@@ -66,6 +70,7 @@ class Noeud
         Noeud* enfant;
         Noeud* prochain;
         bool estValide;
+        bool estTrajetDirect;
         const Trajet* trajetAssocie;
 };
 

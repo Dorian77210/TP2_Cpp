@@ -34,8 +34,6 @@ void    TrajetCompose::Afficher ( ) const
         listeTrajets->GetTrajet(i)->Afficher();
         if (i != ( taille - 1 ) ) cout << " - ";
     }
-
-    cout << endl;
 }
 
 

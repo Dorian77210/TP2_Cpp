@@ -1,5 +1,5 @@
 /*************************************************************************
-                           Trajet.h  -  Interface de la classe Trajet
+                           Catalogue.h  -  Interface de la classe Catalogue
                              -------------------
     début                : 03/10/2019
     copyright            : (C) 2019 par Dorian TERBAH
@@ -29,7 +29,7 @@ class Catalogue
         virtual ~Catalogue ( );
 
         //------------------------------- Méthodes publiques
-        void Afficher ( ) const;
+        void Afficher ( void ) const;
         // La methode "Afficher" permet d'afficher le catalogue
 
         const Collection* GetCatalogue ( ) const;

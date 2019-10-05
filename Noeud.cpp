@@ -19,9 +19,10 @@ using namespace std;
 // -------------- Includes personnels
 #include "Noeud.h"
 #include "Trajet.h"
+#include "Collection.h"
 
-Noeud::Noeud ( const Trajet* _trajetAssocie, Noeud* _parent ) 
-    : estValide ( false )
+Noeud::Noeud ( const Trajet* _trajetAssocie, Noeud* _parent, bool _estTrajetDirect ) 
+    : estValide ( false ), estTrajetDirect ( _estTrajetDirect )
 {
     #ifdef MAP
         cout << "Appel au constructeur de la classe <Noeud>" << endl;
@@ -68,19 +69,29 @@ void Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
     if ( strcmp ( trajetArrivee, arrivee ) == 0 ) 
     {
         // on arrive en fin de branche, cette branche est donc un trajet possible
+        if ( estTrajetDirect ) return; // pas besoin d'ajouter de noeuds puisqu'un trajets directs n'a pas besoin d'enfants
+
         estValide = true;
         // creation du noeuf enfant ou rajout a la fin de l'enfant
-        if ( enfant == NOEUD_NULL ) 
+        if ( strcmp ( arriveeAssociee, trajetDepart ) == 0) 
         {
-            enfant = new Noeud ( trajet, this );
-            enfant->estValide = true;    
+            if ( enfant == NOEUD_NULL ) 
+            {
+                enfant = new Noeud ( trajet, this );
+                enfant->estValide = true;
+            } else
+            {
+                Noeud* voisin = enfant->AjouterVoisin ( trajet );
+                voisin->estValide = true;
+            }
         } else
         {
-            enfant->AjouterVoisin ( trajet );
+            return; // on ne peut pas ajouter de noeud
         }
+
         // on remonte dans l'arbre
         Noeud* _parent = parent;
-        while ( _parent != NULL ) 
+        while ( _parent != NOEUD_NULL ) 
         {
             _parent->estValide = true;
             _parent = _parent->parent;
@@ -124,16 +135,43 @@ void Noeud::Afficher ( void )
     {
         if ( noeud->estValide ) 
         {
-            if ( enfant != NOEUD_NULL ) 
-            {
-                trajetAssocie->Afficher ( );
-                enfant->Afficher ( );
-            } else
+            if ( noeud->estTrajetDirect ) 
             {
                 noeud->trajetAssocie->Afficher ( );
                 cout << endl;
+                return;
             }
-        }
+
+            if ( enfant != NOEUD_NULL ) 
+            {
+                enfant->Afficher ( );
+            } else
+            {
+                Collection* collection = new Collection ( COLLECTION_TAILLE_PAR_DEFAUT, false );
+                const Trajet* trajet;
+                unsigned int i;
+                Noeud* _parent = parent;
+
+                collection->Ajouter ( noeud->trajetAssocie );
+
+                while ( _parent != NOEUD_NULL ) 
+                {
+                    collection->Ajouter ( _parent->trajetAssocie );
+                    _parent = _parent->parent;
+                }
+
+                for ( i = collection->GetTaille ( ); i > 0; i-- )
+                {
+                    trajet = collection->GetTrajet ( i - 1 );
+                    trajet->Afficher ( );
+                    if ( i != 1 ) cout << " - ";
+                }
+
+                cout << endl;
+
+                delete collection;
+            }       
+        } 
     }
 }
 
@@ -150,4 +188,9 @@ const Noeud* Noeud::GetVoisin ( void ) const
 void Noeud::SetEstValide ( bool _estValide ) 
 {
     estValide = _estValide;
+}
+
+void Noeud::SetEstTrajetDirect ( bool _estTrajetDirect ) 
+{
+    estTrajetDirect = _estTrajetDirect;
 }

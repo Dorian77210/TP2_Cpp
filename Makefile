@@ -38,7 +38,7 @@ Collection.o: Collection.cpp Collection.h Trajet.h
 Main.o: Main.cpp Catalogue.h
 	$(G) $(CFLAGS) -c Main.cpp
 
-Menu.o: Menu.cpp Menu.h Catalogue.h Trajet.h TrajetSimple.h TrajetCompose.h
+Menu.o: Menu.cpp Menu.h Catalogue.h Trajet.h TrajetSimple.h TrajetCompose.h Collection.h
 	$(G) $(CFLAGS) -c Menu.cpp	
 
 Noeud.o: Noeud.cpp Noeud.h Trajet.h

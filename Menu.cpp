@@ -189,6 +189,5 @@ void Menu::ajouterTrajet ( void )
 
 void Menu::afficherCatalogue ( void ) const
 {
-    cout << endl;
     catalogue->Afficher ( );
 }
