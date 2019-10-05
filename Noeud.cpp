@@ -69,6 +69,15 @@ void Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
     {
         // on arrive en fin de branche, cette branche est donc un trajet possible
         estValide = true;
+        // creation du noeuf enfant ou rajout a la fin de l'enfant
+        if ( enfant == NOEUD_NULL ) 
+        {
+            enfant = new Noeud ( trajet, this );
+            enfant->estValide = true;    
+        } else
+        {
+            enfant->AjouterVoisin ( trajet );
+        }
         // on remonte dans l'arbre
         Noeud* _parent = parent;
         while ( _parent != NULL ) 
@@ -108,28 +117,23 @@ Noeud* Noeud::AjouterVoisin ( const Trajet* trajet )
 void Noeud::Afficher ( void ) 
 {
     // affichage pour les voisins
-    Noeud* noeud;
-    for ( noeud = this; noeud->prochain != NOEUD_NULL; noeud = noeud->prochain )
+    Noeud* noeud = this;
+
+    for ( noeud = this; noeud != NOEUD_NULL; noeud = noeud->prochain )
     {
-        cout << noeud->trajetAssocie->GetVilleDepart ( ) << endl;
         if ( noeud->estValide ) 
         {
-            noeud->Afficher ( );
-            noeud->trajetAssocie->Afficher ( );
+            if ( enfant != NOEUD_NULL ) 
+            {
+                trajetAssocie->Afficher ( );
+                enfant->Afficher ( );
+            } else
+            {
+                noeud->trajetAssocie->Afficher ( );
+                cout << endl;
+            }
         }
     }
-
-    if ( estValide ) 
-    {
-        if ( enfant == NOEUD_NULL )
-        {
-            trajetAssocie->Afficher ( );
-        } else 
-        {
-            enfant->Afficher ( );
-        }
-    }
-
 }
 
 const bool Noeud::EstValide ( void ) const

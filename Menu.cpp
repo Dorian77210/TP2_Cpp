@@ -81,6 +81,9 @@ void Menu::rechercherTrajet ( void ) const
     cout << "Voici la liste des trajets correspondants : " << endl;
     // recherche de tous les trajets possibles
     catalogue->RechercheComplexe ( depart, arrivee );
+
+    delete [] arrivee;
+    delete [] depart;
 }
 
 void Menu::ajouterTrajet ( void ) 
@@ -145,6 +148,8 @@ void Menu::ajouterTrajet ( void )
                 }
             } else
             {
+                // suppression et reallocation de arrivee
+                delete [] arrivee;
                 arrivee = new char [ MAX_TAILLE_STRING ];
                 cin >> depart;
             }
@@ -162,7 +167,9 @@ void Menu::ajouterTrajet ( void )
             // ajout du trajet dans la collection
             collectionTrajets->Ajouter ( trajet );
 
-            // reallocation des chaines de caracteres
+            // suppression et reallocation des chaines de caracteres
+            delete [] depart;
+            delete [] moyenTransport;
             depart = new char [ MAX_TAILLE_STRING ];
             moyenTransport = new char [ MAX_TAILLE_STRING ];
 
@@ -171,6 +178,11 @@ void Menu::ajouterTrajet ( void )
         // creation du trajet compose
         trajet = new TrajetCompose ( collectionTrajets );
     }
+
+    // liberations des allocations
+    delete [] depart;
+    delete [] arrivee;
+    delete [] moyenTransport;
 
     catalogue->Ajouter ( trajet );
 }

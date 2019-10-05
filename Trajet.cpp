@@ -20,14 +20,14 @@ using namespace std;
 Trajet::Trajet ( ) 
 {
     #ifdef MAP
-        cout << "Appel au constructeur de la classe Trajet" << endl;
+        cout << "Appel au constructeur de la classe <Trajet>" << endl;
     #endif
 }
 
 Trajet::~Trajet ( ) 
 {
     #ifdef MAP
-        cout << "Appel au destructeur de la classe Trajet" << endl;
+        cout << "Appel au destructeur de la classe <Trajet>" << endl;
     #endif
 }
 

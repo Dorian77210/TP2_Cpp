@@ -5,7 +5,7 @@ CFLAGS = -Wall \
 		 -ansi \
 		 -pedantic \
 		 -std=c++11 \
-		 -DMAP \
+		 #-DMAP \
 		 
 EXE = main
 OFILES = Main.o \

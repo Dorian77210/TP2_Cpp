@@ -80,6 +80,7 @@ void Catalogue::Rechercher ( const char* depart, const char* arrivee ) const
             if ( !trajetsTrouves ) trajetsTrouves = true;
             cout << " - ";
             trajet->Afficher ( );
+            cout << endl;
         }
     }
 

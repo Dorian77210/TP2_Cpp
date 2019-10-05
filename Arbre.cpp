@@ -57,6 +57,7 @@ void Arbre::RechercherTrajetsPossibles ( const Catalogue* catalogue, const char*
             {
                 voisin = base->AjouterVoisin ( trajet );
             }
+
         }
 
         if ( strcmp ( arrivee, trajet->GetVilleArrivee ( ) ) == 0 && voisin != NOEUD_NULL ) 
