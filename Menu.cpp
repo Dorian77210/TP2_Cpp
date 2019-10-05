@@ -61,6 +61,7 @@ void Menu::Run ( void )
 // ------------- Méthodes protégées
 void Menu::afficherMenu ( void ) const 
 {
+    cout << endl;
     cout << "Option 1 : Ajouter un trajet" << endl;
     cout << "Option 2 : Afficher le catalogue" << endl;
     cout << "Option 3 : Rechercher un parcours" << endl;
@@ -79,7 +80,7 @@ void Menu::rechercherTrajet ( void ) const
 
     cout << "Voici la liste des trajets correspondants : " << endl;
     // recherche de tous les trajets possibles
-    catalogue->Rechercher ( depart, arrivee );
+    catalogue->RechercheComplexe ( depart, arrivee );
 }
 
 void Menu::ajouterTrajet ( void ) 
@@ -140,6 +141,7 @@ void Menu::ajouterTrajet ( void )
                     cin >> depart;
                     if ( strcmp ( depart, arrivee ) == 0 ) break;
                     cout << "Le nom de la ville de depart ne correspond pas a la ville d'arrivée précédente. Veuillez resaisir votre ville de départ." << endl;
+                    cout << "Départ : ";
                 }
             } else
             {
@@ -175,5 +177,6 @@ void Menu::ajouterTrajet ( void )
 
 void Menu::afficherCatalogue ( void ) const
 {
+    cout << endl;
     catalogue->Afficher ( );
 }

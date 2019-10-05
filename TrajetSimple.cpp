@@ -25,7 +25,7 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void    TrajetSimple::Afficher ( ) const
 {
-	cout << depart << " -> " << arrivee << " par " << moyenTransport << endl;
+	cout << "de " << depart << " à " << arrivee << " en " << moyenTransport;
 }
 
 

@@ -9,10 +9,12 @@ CFLAGS = -Wall \
 		 
 EXE = main
 OFILES = Main.o \
+		 Arbre.o \
 		 TrajetCompose.o \
 		 Catalogue.o \
 		 Collection.o \
 		 Menu.o \
+		 Noeud.o \
 		 Trajet.o \
 		 TrajetSimple.o \
 
@@ -24,7 +26,10 @@ clean:
 $(EXE): $(OFILES)
 	$(G) $(CFLAGS) -o $(EXE) $(OFILES)
 
-Catalogue.o: Catalogue.cpp Catalogue.h Trajet.h TrajetCompose.h TrajetSimple.h Collection.h
+Arbre.o: Arbre.cpp Arbre.h Catalogue.h Collection.h Trajet.h
+	$(G) $(CFLAGS) -c Arbre.cpp
+
+Catalogue.o: Catalogue.cpp Catalogue.h Trajet.h TrajetCompose.h TrajetSimple.h Collection.h Arbre.h
 	$(G) $(CFLAGS) -c Catalogue.cpp
 
 Collection.o: Collection.cpp Collection.h Trajet.h
@@ -35,6 +40,9 @@ Main.o: Main.cpp Catalogue.h
 
 Menu.o: Menu.cpp Menu.h Catalogue.h Trajet.h TrajetSimple.h TrajetCompose.h
 	$(G) $(CFLAGS) -c Menu.cpp	
+
+Noeud.o: Noeud.cpp Noeud.h Trajet.h
+	$(G) $(CFLAGS) -c Noeud.cpp		
 
 Trajet.o: Trajet.cpp Trajet.h
 	$(G) $(CFLAGS) -c Trajet.cpp

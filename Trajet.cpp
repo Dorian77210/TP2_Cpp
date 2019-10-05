@@ -8,7 +8,7 @@
 
 // ---------- Réalisation de la classe <Trajet> (fichier Trajet.cpp) -------
 
-// --------- INCLUDE
+// --------- INCLUDE SYSTEMES
 #include <cstring>
 #include <iostream>
 

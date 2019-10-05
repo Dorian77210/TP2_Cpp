@@ -29,12 +29,13 @@ void    TrajetCompose::Afficher ( ) const
     unsigned int    i;
 
     taille = listeTrajets->GetTaille();
-    cout << "Trajet composé des trajets : " << endl;
     for (i = 0; i < taille; i++)
     {
-        cout << "   ";
         listeTrajets->GetTrajet(i)->Afficher();
+        if (i != ( taille - 1 ) ) cout << " - ";
     }
+
+    cout << endl;
 }
 
 

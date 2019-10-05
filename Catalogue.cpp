@@ -14,6 +14,7 @@ using namespace std;
 
 //------------ Include personnel
 #include "Catalogue.h"
+#include "Arbre.h"
 #include "Trajet.h"
 #include "Collection.h"
 
@@ -53,9 +54,14 @@ void Catalogue::Afficher ( ) const
     for ( i = 0; i < tailleCollection; i++ ) 
     {
         trajet = collectionTrajets->GetTrajet ( i );
-        cout << "Trajet numero " << ( i + 1 ) << ":";
+        cout << "Trajet numero " << ( i + 1 ) << " : ";
         trajet->Afficher ( );
     }
+}
+
+const Collection* Catalogue::GetCatalogue ( ) const 
+{
+    return collectionTrajets;
 }
 
 void Catalogue::Rechercher ( const char* depart, const char* arrivee ) const 
@@ -81,6 +87,15 @@ void Catalogue::Rechercher ( const char* depart, const char* arrivee ) const
     {
         cout << "Aucun trajet n'a été trouvé pour votre demande." << endl;
     }
+}
+
+void Catalogue::RechercheComplexe ( const char* depart, const char* arrivee ) const
+{
+    Arbre* arbre = new Arbre ( );
+    arbre->RechercherTrajetsPossibles ( this, depart, arrivee );
+    arbre->AfficherTrajetsPossibles ( );
+
+    delete arbre;
 }
 
 void Catalogue::Ajouter ( Trajet* trajet ) 
