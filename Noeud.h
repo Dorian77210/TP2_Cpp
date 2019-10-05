@@ -65,6 +65,9 @@ class Noeud
 
     // ------------------------------- PARTIE PROTEGEE
     private:
+        // ------ Methodes privees
+        void afficher ( void );
+        // Methode qui permet d'afficher une branche d'un arbre
 
         Noeud* parent;
         Noeud* enfant;

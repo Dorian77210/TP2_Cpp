@@ -21,6 +21,7 @@ using namespace std;
 #include "Trajet.h"
 #include "Collection.h"
 
+// --------------- Partie publique
 Noeud::Noeud ( const Trajet* _trajetAssocie, Noeud* _parent, bool _estTrajetDirect ) 
     : estValide ( false ), estTrajetDirect ( _estTrajetDirect )
 {
@@ -41,19 +42,27 @@ Noeud::~Noeud ( )
 
     Noeud* noeud, *tmp;
 
+    // supprime l'enfant
+    for ( noeud = enfant; noeud != NULL; noeud = noeud->prochain )
+    {
+        tmp = noeud->prochain;
+        delete noeud;
+        noeud = tmp;
+    }
+
     // supprimer les voisins
     if ( prochain != NOEUD_NULL ) 
     {
-        for ( noeud = prochain; noeud->prochain != NULL; )
-            {
-                tmp = noeud->prochain;
-                delete noeud;
-                noeud = tmp;
-            }
+        for ( noeud = prochain; noeud != NULL; )
+        {
+            
+
+            tmp = noeud->prochain;
+            delete noeud;
+            noeud = tmp;
+        }
     }
-    
-    // supprime l'enfant
-    delete enfant;
+
 }
 
 void Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
@@ -147,29 +156,7 @@ void Noeud::Afficher ( void )
                 enfant->Afficher ( );
             } else
             {
-                Collection* collection = new Collection ( COLLECTION_TAILLE_PAR_DEFAUT, false );
-                const Trajet* trajet;
-                unsigned int i;
-                Noeud* _parent = parent;
-
-                collection->Ajouter ( noeud->trajetAssocie );
-
-                while ( _parent != NOEUD_NULL ) 
-                {
-                    collection->Ajouter ( _parent->trajetAssocie );
-                    _parent = _parent->parent;
-                }
-
-                for ( i = collection->GetTaille ( ); i > 0; i-- )
-                {
-                    trajet = collection->GetTrajet ( i - 1 );
-                    trajet->Afficher ( );
-                    if ( i != 1 ) cout << " - ";
-                }
-
-                cout << endl;
-
-                delete collection;
+                noeud->afficher ( );
             }       
         } 
     }
@@ -193,4 +180,26 @@ void Noeud::SetEstValide ( bool _estValide )
 void Noeud::SetEstTrajetDirect ( bool _estTrajetDirect ) 
 {
     estTrajetDirect = _estTrajetDirect;
+}
+
+
+// ------- Partie privee
+void Noeud::afficher ( void ) 
+{
+    if ( parent != NOEUD_NULL ) 
+    {
+        parent->afficher ( );
+        trajetAssocie->Afficher ( );
+        if ( enfant != NOEUD_NULL ) 
+        {
+            cout << " - ";
+        } else 
+        {
+            cout << endl;
+        }
+    } else
+    {
+        trajetAssocie->Afficher ( );
+        cout << " - ";
+    }
 }

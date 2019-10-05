@@ -15,8 +15,10 @@ using namespace std;
 #include "Collection.h"
 #include "Trajet.h"
 
+// -------- Partie publique
+
 // ----------------- Constructeurs - destructeur
-Collection::Collection ( unsigned int _tailleMax, bool _doitSupprimer ) 
+Collection::Collection ( unsigned int _tailleMax ) 
     : tailleMax ( _tailleMax ), tailleCourante ( 0 )
 {
     #ifdef MAP
@@ -26,39 +28,21 @@ Collection::Collection ( unsigned int _tailleMax, bool _doitSupprimer )
     trajets = new const Trajet* [ tailleMax ];
 }
 
-Collection::Collection ( const Collection & collection ) 
-    : tailleMax ( collection.tailleMax )
-{
-    #ifdef MAP
-        cout << "Appel au constructeur de copie de la classe Collection" << endl;
-    #endif
-
-    trajets = new const Trajet* [ tailleMax ];
-
-    for ( tailleCourante = 0; tailleCourante < collection.tailleCourante; tailleCourante++ ) 
-    {
-        trajets [ tailleCourante ] = collection.trajets [ tailleCourante ];
-    }
-}
-
 Collection::~Collection ( ) 
 {  
     #ifdef MAP
         cout << "Appel au destructeur de la classe Collection" << endl;
     #endif
     
-    if ( doitSupprimer ) 
+    unsigned int i;
+
+    // supprime tous les trajets dans la collection
+    for ( i = 0; i < tailleCourante; i++ ) 
     {
-        unsigned int i;
-
-        // supprime tous les trajets dans la collection
-        for ( i = 0; i < tailleCourante; i++ ) 
-        {
-            delete trajets [ i ];
-        }
-
-        delete [] trajets;
+        delete trajets [ i ];
     }
+
+    delete [] trajets;
 }
 
 // ---------------- Méthodes publiques
