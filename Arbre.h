@@ -43,6 +43,10 @@ class Arbre
     // La methode "AfficherTrajetsPossibles" permet d'afficher les trajets disponibles
     // en fonction d'un depart et d'une arrivee
 
+    const bool ContientPossibilites ( void ) const;
+    // La methode "ContientPossibilites" permet de savoir si l'arbre contient
+    // des trajets possibles en fonction d'une arrivee et d'un depart
+
     // ------------------------------ PARTIE PRIVEE
     private:
         Noeud* base;

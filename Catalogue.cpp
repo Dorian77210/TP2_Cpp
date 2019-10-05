@@ -56,6 +56,7 @@ void Catalogue::Afficher ( ) const
         trajet = collectionTrajets->GetTrajet ( i );
         cout << "Trajet numero " << ( i + 1 ) << " : ";
         trajet->Afficher ( );
+        cout << endl;
     }
 }
 
@@ -94,7 +95,14 @@ void Catalogue::RechercheComplexe ( const char* depart, const char* arrivee ) co
 {
     Arbre* arbre = new Arbre ( );
     arbre->RechercherTrajetsPossibles ( this, depart, arrivee );
-    arbre->AfficherTrajetsPossibles ( );
+    
+    if ( arbre->ContientPossibilites ( ) )
+    {
+        arbre->AfficherTrajetsPossibles ( );
+    } else
+    {
+        cout << "Aucun trajet disponible." << endl;
+    }
 
     delete arbre;
 }

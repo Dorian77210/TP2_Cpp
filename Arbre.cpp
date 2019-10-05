@@ -67,6 +67,12 @@ void Arbre::RechercherTrajetsPossibles ( const Catalogue* catalogue, const char*
         }
     }
 
+    // il n'y a aucun trajets de disponibles
+    if ( base == NOEUD_NULL ) 
+    {
+        return;
+    }
+
     // ajout des autres trajets
     for ( i = 0; i < tailleCatalogue; i++ ) 
     {
@@ -81,4 +87,17 @@ void Arbre::RechercherTrajetsPossibles ( const Catalogue* catalogue, const char*
 void Arbre::AfficherTrajetsPossibles ( void ) const
 {
     base->Afficher ( );
+}
+
+const bool Arbre::ContientPossibilites ( void ) const 
+{
+    if ( base == NOEUD_NULL ) return false;
+    const Noeud* courant;
+
+    for ( courant = base; courant != NULL; courant = courant->GetVoisin ( ) ) 
+    {
+        if ( courant->EstValide ( ) ) return true;
+    }    
+
+    return false;
 }

@@ -46,6 +46,9 @@ class Noeud
         // Le parametre "noeud" represente le nouveau noeud a ajouter
         // Cette methode renvoit le voisin ajoute
 
+        const Noeud* GetVoisin ( void ) const;
+        // La methode "GetVosin" permet de recuperer le maillon suivant du noeud courant
+
         void Afficher ( void );
         // La methode "Afficher" permet d'afficher un trajet de maniere recursive
 

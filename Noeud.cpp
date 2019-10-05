@@ -116,6 +116,7 @@ Noeud* Noeud::AjouterVoisin ( const Trajet* trajet )
 
 void Noeud::Afficher ( void ) 
 {
+    // Algorithme recursif
     // affichage pour les voisins
     Noeud* noeud = this;
 
@@ -139,6 +140,11 @@ void Noeud::Afficher ( void )
 const bool Noeud::EstValide ( void ) const
 {
     return estValide;
+}
+
+const Noeud* Noeud::GetVoisin ( void ) const
+{
+    return prochain;
 }
 
 void Noeud::SetEstValide ( bool _estValide ) 
