@@ -40,29 +40,8 @@ Noeud::~Noeud ( )
         cout << "Appel au destructeur de la classe <Noeud>" << endl;
     #endif
 
-    Noeud* noeud, *tmp;
-
-    // supprime l'enfant
-    if ( enfant == NOEUD_NULL )
-    {
-        for ( noeud = enfant; noeud != NULL;)
-        {
-            tmp = noeud->prochain;
-            delete noeud;
-            noeud = tmp;
-        }
-    }
-
-    // supprimer les voisins
-    if ( prochain != NOEUD_NULL ) 
-    {
-        for ( noeud = prochain; noeud != NULL; )
-        {
-            tmp = noeud->prochain;
-            delete noeud;
-            noeud = tmp;
-        }
-    }
+    if ( enfant != NOEUD_NULL ) delete enfant;
+    if ( prochain != NOEUD_NULL ) delete prochain;
 }
 
 void Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
