@@ -24,7 +24,7 @@ using namespace std;
 Menu::Menu ( void ) 
 {
     #ifdef MAP
-        cout << "Appel au constructeur de Menu" << endl;
+        cout << "Appel au constructeur de la classe <Menu>" << endl;
     #endif
 
     catalogue = new Catalogue ( );
@@ -33,7 +33,7 @@ Menu::Menu ( void )
 Menu::~Menu ( )
 {
     #ifdef MAP
-        cout << "Appel au destructeur du Menu" << endl;
+        cout << "Appel au destructeur de la classe <Menu>" << endl;
     #endif
 
     delete catalogue;
