@@ -33,6 +33,7 @@ Arbre::~Arbre ( )
     #ifdef MAP
         cout << "Appel au destructeur de la classe <Arbre>" << endl;
     #endif
+    
     delete base;
 }
 

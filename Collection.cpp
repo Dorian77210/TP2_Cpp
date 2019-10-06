@@ -22,7 +22,7 @@ Collection::Collection ( unsigned int _tailleMax )
     : tailleMax ( _tailleMax ), tailleCourante ( 0 )
 {
     #ifdef MAP
-        cout << "Appel au constructeur de la classe Collection" << endl;
+        cout << "Appel au constructeur de la classe <Collection>" << endl;
     #endif
     
     trajets = new const Trajet* [ tailleMax ];
@@ -31,7 +31,7 @@ Collection::Collection ( unsigned int _tailleMax )
 Collection::~Collection ( ) 
 {  
     #ifdef MAP
-        cout << "Appel au destructeur de la classe Collection" << endl;
+        cout << "Appel au destructeur de la classe <Collection>" << endl;
     #endif
     
     unsigned int i;

@@ -43,11 +43,14 @@ Noeud::~Noeud ( )
     Noeud* noeud, *tmp;
 
     // supprime l'enfant
-    for ( noeud = enfant; noeud != NULL; noeud = noeud->prochain )
+    if ( enfant == NOEUD_NULL )
     {
-        tmp = noeud->prochain;
-        delete noeud;
-        noeud = tmp;
+        for ( noeud = enfant; noeud != NULL;)
+        {
+            tmp = noeud->prochain;
+            delete noeud;
+            noeud = tmp;
+        }
     }
 
     // supprimer les voisins
@@ -55,14 +58,11 @@ Noeud::~Noeud ( )
     {
         for ( noeud = prochain; noeud != NULL; )
         {
-            
-
             tmp = noeud->prochain;
             delete noeud;
             noeud = tmp;
         }
     }
-
 }
 
 void Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )

@@ -22,7 +22,7 @@ using namespace std;
 Catalogue::Catalogue ( unsigned int _tailleMax ) 
 {
     #ifdef MAP
-        cout << "Appel au constructeur du catalogue" << endl;
+        cout << "Appel au constructeur de la classe <Catalogue>" << endl;
     #endif
     collectionTrajets = new Collection ( _tailleMax );
 }
@@ -30,7 +30,7 @@ Catalogue::Catalogue ( unsigned int _tailleMax )
 Catalogue::~Catalogue ( ) 
 {
     #ifdef MAP
-        cout << "Appel au destructeur du catalogue" << endl;
+        cout << "Appel au destructeur de la classe <Catalogue>" << endl;
     #endif
 
     delete collectionTrajets;
