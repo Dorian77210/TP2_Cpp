@@ -51,6 +51,11 @@ void Interface::Run ( void )
         else if ( choix == AJOUTER_TRAJET ) ajouterTrajet ( );
         else if ( choix == RECHERCHER_PARCOURS ) rechercherTrajet ( );
         else if ( choix == QUITTER_APPLICATION ) loop = false;
+        else 
+        {
+            cin.clear();
+            cin.ignore(MAX_STREAM, '\n');
+        }
     }
 }
 
