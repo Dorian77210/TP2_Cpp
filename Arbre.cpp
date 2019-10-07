@@ -91,7 +91,6 @@ void Arbre::RechercherTrajetsPossibles ( const Catalogue* catalogue, const char*
             {
                 estAjoute = base->Ajouter ( trajet, arrivee );
                 utilises [ i ] = estAjoute;
-                trajet->Afficher ( ); cout << "    " << estAjoute << endl;
             }
         }
     }

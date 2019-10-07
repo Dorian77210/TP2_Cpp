@@ -1,5 +1,7 @@
 /*************************************************************************
-                        Interface  -  description
+                        Interface  -  La classe <Interface> permet de gérer 
+                        les inputs de l'utilisateur et
+                        de faire le lien entre l'utilisateur et le catalogue des trajets
                              -------------------
     début                : 03/10/2019
     copyright            : (C) 2019 par  Dorian TERBAH
@@ -24,6 +26,10 @@ const int QUITTER_APPLICATION = 4;
 const unsigned int TRAJET_SIMPLE_OPTION = 1;
 const unsigned int TRAJET_COMPOSE_OPTION = 2;
 
+// constantes pour choisir l'algorithme de recherche
+const unsigned int RECHERCHE_BASIQUE = 1;
+const unsigned int RECHERCHE_COMPLEXE = 2;
+
 const unsigned int MAX_TAILLE_STRING = 64;
 const unsigned int MAX_STREAM = 2147483647;
 
@@ -34,25 +40,28 @@ class Interface
     public:
         //--------- Constructeurs et destructeur
         Interface ( void );
-        // Mode d'emploi
-            // La classe <Interface> permet de gérer les inputs de l'utilisateur et
-            // de faire le lien entre l'utilisateur et le catalogue des trajets
+        // Constructeur de la classe <Interface>
 
         virtual ~Interface ( );
-        // Destructeur de la classe <Interface>
+        // Destructeur de la classe <Interface>. 
 
+        // ----------------------- Methodes publiques
         void Run ( void );
-        // La méthode "Run" permet de démarrer l'application
+        // La méthode "Run" contient la logique principale de l'application. 
+        // Elle créé une boucle infinie qui permet à l'utilisateur d'interagir
+        // avec l'application. Cette boucle s'arrete si l'utilisateur décide de quitter
+        // l'application
 
     // ---------- PARTIE PROTÉGÉE
     protected:
         // ---------- Méthodes protégées
         void afficherInterface ( void ) const;
-        // La méthode "afficherInterface" permet d'afficher le Interface des options possibles
-        // de l'application
+        // La méthode "afficherInterface" permet d'afficher les actions utilisateurs
+        // de l'application.
 
         void rechercherTrajet ( void ) const;
         // La méthode "rechercherTrajet" permet à l'utilisateur de rechercher un trajet
+
 
         void ajouterTrajet ( void );
         // La méthode "ajouterTrajet" permet à l'utilisateur d'ajouter un trajet

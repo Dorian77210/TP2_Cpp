@@ -153,7 +153,7 @@ void Noeud::Afficher ( void )
             else
             {
                 // on arrive en fin de branche
-                // noeud->afficher ( );
+                noeud->afficher ( );
             }       
         } 
     }

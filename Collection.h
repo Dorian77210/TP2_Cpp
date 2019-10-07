@@ -26,26 +26,32 @@ class Collection
         Collection ( unsigned int tailleMax = COLLECTION_TAILLE_PAR_DEFAUT );
         // Constructeur permettant de creer un collection de trajets
         // Le parametre "tailleMax" definit la taille maximale de la collection
-        // Le parametre "_doitSupprimer" permet de savoir si les trajets doivent etre supprimer ou non
         
         virtual ~Collection ( );
-        // Destructeur d'une collection
+        // Destructeur d'une collection. Il permet de supprimer tous les trajets 
+        // associés à la collection
 
         //------------------------------- Méthodes publiques
         void Ajouter ( const Trajet* trajet );
         // La methode "Ajouter" permet d'ajouter un trajet dans la collection courante
+        // Le parametre "trajet" est le trajet à ajouter dans la collection. Il est constant
+        // car nous partons du principe que nous pourrons pas le modifier
 
         const Trajet* GetTrajet ( unsigned int index ) const;
         // Permet de recuperer un trajet dans la collection a l'indice "index"
+        // L'indice "index" est utilisé pour trouver le trajet dans l'attributs "trajets"
 
         unsigned int GetTaille ( ) const;
-        // Permet de recuperer la taille de la collection
+        // Permet de recuperer la taille de la collection. Cette méthode peut 
+        // être utilisée pour itérer sur les trajets par exemple.
 
     //----------------------- PARTIE PRIVEE
     private:
         //--------------- Méthodes privées
         void reajuster ( void );
-        // Methode qui permet d'augementer la capacité du tableau de trajets
+        // Methode qui permet d'augementer la capacité du tableau de trajets. 
+        // A chaque appel de rajuster, le capacité du tableau est augmenté de la constante
+        // "FACTEUR_REDIMENSIONNEMENT"
 
     //----------------------- PARTIE PROTEGEE
     protected:

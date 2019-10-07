@@ -79,7 +79,6 @@ void Catalogue::Rechercher ( const char* depart, const char* arrivee ) const
         if ( trajet->EstValide ( depart, arrivee ) ) 
         {
             if ( !trajetsTrouves ) trajetsTrouves = true;
-            cout << " - ";
             trajet->Afficher ( );
             cout << endl;
         }

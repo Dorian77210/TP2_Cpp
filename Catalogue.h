@@ -1,5 +1,9 @@
 /*************************************************************************
                            Catalogue.h  -  Interface de la classe Catalogue
+                           La classe <Catalogue> permet de gérer l'ensemble
+                           des trajets durant la vie de l'application. Elle 
+                           fait le rôle d'interface entre l'utilisateur et les 
+                           données de l'applicationhttp://servifa-algo.insa-lyon.fr/domjudge/team/
                              -------------------
     début                : 03/10/2019
     copyright            : (C) 2019 par Dorian TERBAH
@@ -36,11 +40,13 @@ class Catalogue
         //La méthode "GetCatalogue" permet de recuperer la liste 
         // des trajets disponibles dans le catalogue
         // La methode renvoit le parametre "collectionTrajets" de maniere
-        // constante
+        // constante pour qu'il soit pas modifiable or de son contexte
 
         void Rechercher ( const char* depart, const char* arrivee ) const;
         // La methode "Rechercher" permet à l'utilisateur de rechercher un trajet
         // en fonction d'un depart et d'une arrivee.
+        // Cette recherche est simple (c'est à dire qu'elle ne cherche pas 
+        // de combinaisons de trajets).
 
         void RechercheComplexe ( const char* depart, const char* arrivee ) const;
         // La methode "RechercheComplexe" permet à l'utilisateur de rechercher un
@@ -49,7 +55,7 @@ class Catalogue
         // de trajets simples et/ou composes
 
         void Ajouter ( Trajet* trajet );
-        // La methode "Ajouter" permet d'ajouter un trajet 
+        // La methode "Ajouter" permet d'ajouter un trajet à la collection de trajets 
 
     protected:
         Collection* collectionTrajets;

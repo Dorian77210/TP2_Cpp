@@ -31,6 +31,15 @@ class TrajetCompose : public Trajet
 //----------------------------------------------------------------- PUBLIC
 
 public:
+//-------------------------------------------- Constructeurs - destructeur
+    TrajetCompose ( Collection* uneListeTrajets );
+    // Mode d'emploi :
+    //  Construit un trajet composé en initialisant sa liste de trajets.
+    // Le parametre "uneListeTrajets" est une collection de trajets
+
+    virtual ~TrajetCompose ( );
+    // Mode d'emploi :
+    //  Détruit en profondeur le trajet simple. (La liste des trajets)
 //----------------------------------------------------- Méthodes publiques
     void    Afficher() const;
     // Mode d'emploi :
@@ -48,16 +57,6 @@ public:
     //  Renvoie un pointeur sur la ville d'arrivée du trajet (pas de copie).
     // Cette méthode est présente dans la classe 
     // mère <Trajet> mais elle a l'obligation d'etre redefinie.
-
-//-------------------------------------------- Constructeurs - destructeur
-    TrajetCompose ( Collection* uneListeTrajets );
-    // Mode d'emploi :
-    //  Construit un trajet composé en initialisant sa liste de trajets.
-    // Le parametre "uneListeTrajets" est une collection de trajets
-
-    virtual ~TrajetCompose ( );
-    // Mode d'emploi :
-    //  Détruit en profondeur le trajet simple. (La liste des trajets)
 
 //------------------------------------------------------------------ PRIVE
 

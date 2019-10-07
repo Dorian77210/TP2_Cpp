@@ -71,6 +71,7 @@ void Interface::afficherInterface ( void ) const
 
 void Interface::rechercherTrajet ( void ) const
 {
+    unsigned int choix = 0;
     char* arrivee = new char [ MAX_TAILLE_STRING ], *depart = new char [ MAX_TAILLE_STRING ];
     cout << "Depart : ";
     cin >> depart;
@@ -78,9 +79,24 @@ void Interface::rechercherTrajet ( void ) const
     cout << "Arrivee : ";
     cin >> arrivee;
 
+    while ( choix != RECHERCHE_BASIQUE && choix != RECHERCHE_COMPLEXE )
+    {
+        cout << "Quel type de recherche souhaitez-vous utiliser ? " << endl;
+        cout << "1 : Recherche basique ? " << endl;
+        cout << "2 : Recherche complexe ? " << endl;
+        cout << "Choisisez la recherche que vous voulez : ";
+        cin >> choix;
+    }
+
     cout << "Voici la liste des trajets correspondants : " << endl;
-    // recherche de tous les trajets possibles
-    catalogue.RechercheComplexe ( depart, arrivee );
+    if ( choix == RECHERCHE_BASIQUE ) 
+    {
+        catalogue.Rechercher ( depart, arrivee );
+    } else
+    {
+        // recherche de tous les trajets possibles
+        catalogue.RechercheComplexe ( depart, arrivee );
+    }
 
     delete [] arrivee;
     delete [] depart;

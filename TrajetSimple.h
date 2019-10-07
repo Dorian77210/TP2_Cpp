@@ -29,7 +29,19 @@ class TrajetSimple : public Trajet
 //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
+//-------------------------------------------- Constructeurs - destructeur
+    TrajetSimple ( const char * villeDepart, const char * villeArrivee, const char * moyTrans );
+    // Mode d'emploi :
+    //  Construit un trajet simple en initialisant ses attributs.
+    // Le parametre "villeDepart" represente la source du trajet
+    // Le parametre "villeArrivee" represente la destination du trajet
+    // Le parametre "moyTran" represente le moyen de transport pour ce trajet
+
+    virtual ~TrajetSimple ( );
+    // Mode d'emploi :
+    //  Détruit en profondeur le trajet simple. (les chaines de caracteres)
+
+    //----------------------------------------------------- Méthodes publiques
     void    Afficher() const;
     // Mode d'emploi :
     //  Affiche les caractéristiques du voyage. Cette méthode est présente dans la classe 
@@ -46,18 +58,6 @@ public:
     //  Renvoie un pointeur sur la ville d'arrivée du trajet (pas de copie).
     // Cette méthode est présente dans la classe 
     // mère <Trajet> mais elle a l'obligation d'etre redefinie.
-
-//-------------------------------------------- Constructeurs - destructeur
-    TrajetSimple ( const char * villeDepart, const char * villeArrivee, const char * moyTrans );
-    // Mode d'emploi :
-    //  Construit un trajet simple en initialisant ses attributs.
-    // Le parametre "villeDepart" represente la source du trajet
-    // Le parametre "villeArrivee" represente la destination du trajet
-    // Le parametre "moyTran" represente le moyen de transport pour ce trajet
-
-    virtual ~TrajetSimple ( );
-    // Mode d'emploi :
-    //  Détruit en profondeur le trajet simple. (les chaines de caracteres)
 
 //------------------------------------------------------------------ PRIVE
 
