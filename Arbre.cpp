@@ -44,9 +44,12 @@ void Arbre::RechercherTrajetsPossibles ( const Catalogue* catalogue, const char*
     const Trajet* trajet;
     Noeud* voisin;
 
+    bool* utilises = new bool [ tailleCatalogue ], estAjoute, fin;
+
     // chercher tous les trajets qui ont comme depart "depart"
     for ( i = 0; i < tailleCatalogue; i++ )
     {
+        utilises [ i ] = false;
         trajet = collectionTrajets->GetTrajet ( i );
         if ( strcmp ( depart, trajet->GetVilleDepart ( ) ) == 0 )
         {
@@ -59,6 +62,7 @@ void Arbre::RechercherTrajetsPossibles ( const Catalogue* catalogue, const char*
                 voisin = base->AjouterVoisin ( trajet );
             }
 
+            utilises [ i ] = true;
         }
 
         if ( strcmp ( arrivee, trajet->GetVilleArrivee ( ) ) == 0 && strcmp ( depart, trajet->GetVilleDepart ( ) ) == 0 ) 
@@ -75,15 +79,24 @@ void Arbre::RechercherTrajetsPossibles ( const Catalogue* catalogue, const char*
         return;
     }
 
+    fin = false;
     // ajout des autres trajets
-    for ( i = 0; i < tailleCatalogue; i++ ) 
+    while ( !fin ) 
     {
-        trajet = collectionTrajets->GetTrajet ( i );
-        if ( strcmp ( depart, trajet->GetVilleDepart ( ) ) != 0 )
+        fin = true;
+        for ( i = 0; i < tailleCatalogue; i++ ) 
         {
-            base->Ajouter ( trajet, arrivee );
+            trajet = collectionTrajets->GetTrajet ( i );
+            if ( ! utilises [ i ] )
+            {
+                estAjoute = base->Ajouter ( trajet, arrivee );
+                utilises [ i ] = estAjoute;
+                trajet->Afficher ( ); cout << "    " << estAjoute << endl;
+            }
         }
     }
+    
+    delete [] utilises;
 }
 
 void Arbre::AfficherTrajetsPossibles ( void ) const

@@ -36,10 +36,11 @@ class Noeud
         // Permettra de detruire le parent et les enfants associe au noeud courant
 
         // ---------- Methodes publiques
-        void Ajouter ( const Trajet* trajet, const char* arrivee );
+        bool Ajouter ( const Trajet* trajet, const char* arrivee );
         // La methode "Ajouter" permet de d'ajouter un trajet dans l'arborescence
         // Le parametre "trajet" represente le trajet a ajouter
         // le parametre "arrivee" permet de savoir si on a atteint la fin d'une branche ou non
+        // Elle renvoit "true" si le trajet a ete ajoute, false sinon
 
         Noeud* AjouterVoisin ( const Trajet* trajet );
         // La methode "AjouterNoeud" permet d'ajouter un noeud en fin de liste chainee (CF. voisin)

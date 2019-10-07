@@ -44,20 +44,22 @@ Noeud::~Noeud ( )
     if ( prochain != NOEUD_NULL ) delete prochain;
 }
 
-void Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
+bool Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
 {
     const char* trajetArrivee = trajet->GetVilleArrivee ( );
     const char* trajetDepart = trajet->GetVilleDepart ( );
     const char* departAssocie = trajetAssocie->GetVilleDepart ( );
     const char* arriveeAssociee = trajetAssocie->GetVilleArrivee ( );
 
-    if ( enfant != NOEUD_NULL ) enfant->Ajouter ( trajet, arrivee );
-    if ( prochain != NOEUD_NULL ) prochain->Ajouter ( trajet, arrivee );
+    bool estAjoute = false;
+
+    if ( enfant != NOEUD_NULL ) estAjoute = estAjoute || enfant->Ajouter ( trajet, arrivee );
+    if ( prochain != NOEUD_NULL ) estAjoute = estAjoute || prochain->Ajouter ( trajet, arrivee );
 
     if ( strcmp ( trajetArrivee, arrivee ) == 0 ) 
     {
         // on arrive en fin de branche, cette branche est donc un trajet possible
-        if ( estTrajetDirect ) return; // pas besoin d'ajouter de noeuds puisqu'un trajets directs n'a pas besoin d'enfants
+        if ( estTrajetDirect ) return false; // pas besoin d'ajouter de noeuds puisqu'un trajets directs n'a pas besoin d'enfants
 
         estValide = true;
         // creation du noeuf enfant ou rajout a la fin de l'enfant
@@ -72,9 +74,11 @@ void Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
                 Noeud* voisin = enfant->AjouterVoisin ( trajet );
                 voisin->estValide = true;
             }
+
+            estAjoute = estAjoute || true;
         } else
         {
-            return; // on ne peut pas ajouter de noeud
+            return false; // on ne peut pas ajouter de noeud
         }
 
         // on remonte dans l'arbre
@@ -88,14 +92,26 @@ void Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
     {
         // doit ajouter un voisin
         AjouterVoisin ( trajet );
-    } else if ( strcmp ( arriveeAssociee, trajetDepart ) == 0 ) 
+        estAjoute = estAjoute || true;
+    } else if ( strcmp ( arriveeAssociee, trajetDepart ) == 0 && strcmp ( arriveeAssociee, arrivee ) != 0 ) 
     {
         // ajout de l'enfant
-        enfant = new Noeud ( trajet, this );
+        if ( enfant == NOEUD_NULL )
+        {
+            enfant = new Noeud ( trajet, this );
+        }
+        else 
+        {
+            AjouterVoisin ( trajet );
+        }
+
+        estAjoute = estAjoute || true;
     } else {
         // arrive != depart, fin de branche
-        return;
+        estAjoute = estAjoute || false;
     }
+
+    return estAjoute;
 }
 
 Noeud* Noeud::AjouterVoisin ( const Trajet* trajet )
@@ -137,7 +153,7 @@ void Noeud::Afficher ( void )
             else
             {
                 // on arrive en fin de branche
-                noeud->afficher ( );
+                // noeud->afficher ( );
             }       
         } 
     }
