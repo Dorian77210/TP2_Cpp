@@ -82,14 +82,13 @@ void Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
         while ( _parent != NOEUD_NULL ) 
         {
             _parent->estValide = true;
-            _parent->trajetAssocie->Afficher ( );
             _parent = _parent->parent;
         }
     } else if ( strcmp ( departAssocie, trajetDepart ) == 0 && strcmp ( arriveeAssociee, arrivee ) != 0 )
     {
         // doit ajouter un voisin
         AjouterVoisin ( trajet );
-    } else if ( strcmp ( arriveeAssociee, departAssocie ) ) 
+    } else if ( strcmp ( arriveeAssociee, trajetDepart ) == 0 ) 
     {
         // ajout de l'enfant
         enfant = new Noeud ( trajet, this );
