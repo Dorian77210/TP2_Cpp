@@ -1,5 +1,5 @@
 /*************************************************************************
-                        TrajetCompose  -  description
+                        Interface  -  description
                              -------------------
     début                : 03/10/2019
     copyright            : (C) 2019 par  Dorian TERBAH
@@ -14,7 +14,7 @@
 #include "Catalogue.h"
 
 // ---------- CONSTANTES
-// constantes pour le menu principal
+// constantes pour le Interface principal
 const int AJOUTER_TRAJET  = 1;
 const int AFFICHAGE_CATALOGUE = 2;
 const int RECHERCHER_PARCOURS = 3;
@@ -47,7 +47,7 @@ class Interface
     protected:
         // ---------- Méthodes protégées
         void afficherInterface ( void ) const;
-        // La méthode "afficherInterface" permet d'afficher le menu des options possibles
+        // La méthode "afficherInterface" permet d'afficher le Interface des options possibles
         // de l'application
 
         void rechercherTrajet ( void ) const;
@@ -61,7 +61,7 @@ class Interface
         // de trajets
 
     private:
-        Catalogue* catalogue;
+        Catalogue catalogue;
 };
 
 #endif

@@ -13,7 +13,7 @@ OFILES = Main.o \
 		 TrajetCompose.o \
 		 Catalogue.o \
 		 Collection.o \
-		 Menu.o \
+		 Interface.o \
 		 Noeud.o \
 		 Trajet.o \
 		 TrajetSimple.o \
@@ -38,8 +38,8 @@ Collection.o: Collection.cpp Collection.h Trajet.h
 Main.o: Main.cpp Catalogue.h
 	$(G) $(CFLAGS) -c Main.cpp
 
-Menu.o: Menu.cpp Menu.h Catalogue.h Trajet.h TrajetSimple.h TrajetCompose.h Collection.h
-	$(G) $(CFLAGS) -c Menu.cpp	
+Interface.o: Interface.cpp Interface.h Catalogue.h Trajet.h TrajetSimple.h TrajetCompose.h Collection.h
+	$(G) $(CFLAGS) -c Interface.cpp	
 
 Noeud.o: Noeud.cpp Noeud.h Trajet.h
 	$(G) $(CFLAGS) -c Noeud.cpp		
