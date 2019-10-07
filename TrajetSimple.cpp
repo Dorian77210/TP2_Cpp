@@ -23,21 +23,20 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void    TrajetSimple::Afficher ( ) const
+void TrajetSimple::Afficher ( ) const
 {
 	cout << "de " << depart << " à " << arrivee << " en " << moyenTransport;
-}
+} // Fin de Afficher
 
-
-const char*     TrajetSimple::GetVilleDepart ( ) const
+const char* TrajetSimple::GetVilleDepart ( ) const
 {
 	return (depart);
-}
+} // Fin de GetVilleDepart
 
-const char*     TrajetSimple::GetVilleArrivee ( ) const
+const char* TrajetSimple::GetVilleArrivee ( ) const
 {
 	return (arrivee);
-}
+} // Fin de GetVilleArrivee
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -74,9 +73,3 @@ TrajetSimple::~TrajetSimple ( )
     delete [] arrivee;
     delete [] moyenTransport;
 } //----- Fin de ~TrajetSimple
-
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
-

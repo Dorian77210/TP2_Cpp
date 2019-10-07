@@ -8,8 +8,8 @@
 *************************************************************************/
 
 //---- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) ----
-#if ! defined ( TRAJETSIMPLE_H )
-#define TRAJETSIMPLE_H
+#if ! defined ( TRAJET_SIMPLE_H )
+#define TRAJET_SIMPLE_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
@@ -72,5 +72,5 @@ protected:
 
 //----------------------- Autres définitions dépendantes de <TrajetSimple>
 
-#endif // TRAJETSIMPLE_H
+#endif // TRAJET_SIMPLE_H
 

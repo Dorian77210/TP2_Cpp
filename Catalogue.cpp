@@ -18,24 +18,6 @@ using namespace std;
 #include "Trajet.h"
 #include "Collection.h"
 
-// ----------------- Constructeurs - destructeur
-Catalogue::Catalogue ( unsigned int _tailleMax ) 
-{
-    #ifdef MAP
-        cout << "Appel au constructeur de la classe <Catalogue>" << endl;
-    #endif
-    collectionTrajets = new Collection ( _tailleMax );
-}
-
-Catalogue::~Catalogue ( ) 
-{
-    #ifdef MAP
-        cout << "Appel au destructeur de la classe <Catalogue>" << endl;
-    #endif
-
-    delete collectionTrajets;
-}
-
 // ------------ Méthodes publiques
 void Catalogue::Afficher ( ) const 
 {
@@ -58,12 +40,12 @@ void Catalogue::Afficher ( ) const
         trajet->Afficher ( );
         cout << endl;
     }
-}
+} // Fin de Afficher
 
 const Collection* Catalogue::GetCatalogue ( ) const 
 {
     return collectionTrajets;
-}
+} // Fin de GetCatalogue
 
 void Catalogue::Rechercher ( const char* depart, const char* arrivee ) const 
 {
@@ -88,25 +70,41 @@ void Catalogue::Rechercher ( const char* depart, const char* arrivee ) const
     {
         cout << "Aucun trajet n'a été trouvé pour votre demande." << endl;
     }
-}
+} // Fin de Rechercher
 
 void Catalogue::RechercheComplexe ( const char* depart, const char* arrivee ) const
 {
-    Arbre* arbre = new Arbre ( );
-    arbre->RechercherTrajetsPossibles ( this, depart, arrivee );
+    Arbre arbre;
+    arbre.RechercherTrajetsPossibles ( this, depart, arrivee );
     
-    if ( arbre->ContientPossibilites ( ) )
+    if ( arbre.ContientPossibilites ( ) )
     {
-        arbre->AfficherTrajetsPossibles ( );
+        arbre.AfficherTrajetsPossibles ( );
     } else
     {
         cout << "Aucun trajet disponible." << endl;
     }
-
-    delete arbre;
-}
+} // Fin de RecherComplexe
 
 void Catalogue::Ajouter ( Trajet* trajet ) 
 {
     collectionTrajets->Ajouter ( trajet );
-}
+} // Fin de Ajouter
+
+// ----------------- Constructeurs - destructeur
+Catalogue::Catalogue ( unsigned int _tailleMax ) 
+{
+    #ifdef MAP
+        cout << "Appel au constructeur de la classe <Catalogue>" << endl;
+    #endif
+    collectionTrajets = new Collection ( _tailleMax );
+} // Fin de Catalogue ( constructeur par defaut )
+
+Catalogue::~Catalogue ( ) 
+{
+    #ifdef MAP
+        cout << "Appel au destructeur de la classe <Catalogue>" << endl;
+    #endif
+
+    delete collectionTrajets;
+} // Fin de ~Catalogue (destructeur)

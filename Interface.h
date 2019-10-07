@@ -55,8 +55,8 @@ class Interface
     // ---------- PARTIE PROTÉGÉE
     protected:
         // ---------- Méthodes protégées
-        void afficherInterface ( void ) const;
-        // La méthode "afficherInterface" permet d'afficher les actions utilisateurs
+        void afficherMenu ( void ) const;
+        // La méthode "afficherMenu" permet d'afficher les actions utilisateurs
         // de l'application.
 
         void rechercherTrajet ( void ) const;
@@ -74,4 +74,4 @@ class Interface
         Catalogue catalogue;
 };
 
-#endif
+#endif // INTERFACE_H

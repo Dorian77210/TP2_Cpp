@@ -19,24 +19,8 @@ using namespace std;
 #include "Catalogue.h"
 #include "Noeud.h"
 
-Arbre::Arbre ( void )
-{
-    #ifdef MAP
-        cout << "Appel au constructeur de la classe <Arbre>" << endl;
-    #endif
 
-    base = NOEUD_NULL;    
-}
-
-Arbre::~Arbre ( ) 
-{   
-    #ifdef MAP
-        cout << "Appel au destructeur de la classe <Arbre>" << endl;
-    #endif
-    
-    delete base;
-}
-
+// --------------- Methodes publiques
 void Arbre::RechercherTrajetsPossibles ( const Catalogue* catalogue, const char* depart, const char* arrivee )
 {
     const Collection* collectionTrajets = catalogue->GetCatalogue ( );
@@ -96,12 +80,12 @@ void Arbre::RechercherTrajetsPossibles ( const Catalogue* catalogue, const char*
     }
     
     delete [] utilises;
-}
+} // ------------- Fin de RechercherTrajetsPossibles
 
 void Arbre::AfficherTrajetsPossibles ( void ) const
 {
     base->Afficher ( );
-}
+} // Fin de AfficherTrajetsPossibles
 
 const bool Arbre::ContientPossibilites ( void ) const 
 {
@@ -114,4 +98,23 @@ const bool Arbre::ContientPossibilites ( void ) const
     }    
 
     return false;
-}
+} // Fin de ContientPossibilites
+
+// ------------------ Constructeur et destructeur
+Arbre::Arbre ( void )
+{
+    #ifdef MAP
+        cout << "Appel au constructeur de la classe <Arbre>" << endl;
+    #endif
+
+    base = NOEUD_NULL;    
+} // Fin de Arbre (constructeur par defaut)
+
+Arbre::~Arbre ( ) 
+{   
+    #ifdef MAP
+        cout << "Appel au destructeur de la classe <Arbre>" << endl;
+    #endif
+    
+    delete base;
+} // Fin de ~Arbre (destructeur de Arbre)

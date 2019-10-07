@@ -17,34 +17,6 @@ using namespace std;
 
 // -------- Partie publique
 
-// ----------------- Constructeurs - destructeur
-Collection::Collection ( unsigned int _tailleMax ) 
-    : tailleMax ( _tailleMax ), tailleCourante ( 0 )
-{
-    #ifdef MAP
-        cout << "Appel au constructeur de la classe <Collection>" << endl;
-    #endif
-    
-    trajets = new const Trajet* [ tailleMax ];
-}
-
-Collection::~Collection ( ) 
-{  
-    #ifdef MAP
-        cout << "Appel au destructeur de la classe <Collection>" << endl;
-    #endif
-    
-    unsigned int i;
-
-    // supprime tous les trajets dans la collection
-    for ( i = 0; i < tailleCourante; i++ ) 
-    {
-        delete trajets [ i ];
-    }
-
-    delete [] trajets;
-}
-
 // ---------------- Méthodes publiques
 void Collection::Ajouter ( const Trajet* trajet )
 {
@@ -56,17 +28,17 @@ void Collection::Ajouter ( const Trajet* trajet )
 
     trajets [ tailleCourante ] = trajet;
     tailleCourante++;
-}
+} // Fin de Ajouter
 
 const Trajet* Collection::GetTrajet ( unsigned int index ) const
 {
     return trajets [ index ];
-}
+} // Fin de GetTrajet
 
 unsigned int Collection::GetTaille ( ) const 
 { 
     return tailleCourante;
-}
+} // Fin de GetTaille
 
 // -------------- Méthodes privées
 void Collection::reajuster ( ) 
@@ -83,5 +55,32 @@ void Collection::reajuster ( )
 
     delete [] trajets;
     trajets = _trajets;
-}
+} // Fin de reajuster
 
+// ----------------- Constructeurs - destructeur
+Collection::Collection ( unsigned int _tailleMax ) 
+    : tailleMax ( _tailleMax ), tailleCourante ( 0 )
+{
+    #ifdef MAP
+        cout << "Appel au constructeur de la classe <Collection>" << endl;
+    #endif
+    
+    trajets = new const Trajet* [ tailleMax ];
+} // Fin de Collection (constructeur par defaut)
+
+Collection::~Collection ( ) 
+{  
+    #ifdef MAP
+        cout << "Appel au destructeur de la classe <Collection>" << endl;
+    #endif
+    
+    unsigned int i;
+
+    // supprime tous les trajets dans la collection
+    for ( i = 0; i < tailleCourante; i++ ) 
+    {
+        delete trajets [ i ];
+    }
+
+    delete [] trajets;
+} // fin de ~Collection

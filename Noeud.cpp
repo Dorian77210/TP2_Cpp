@@ -22,28 +22,8 @@ using namespace std;
 #include "Collection.h"
 
 // --------------- Partie publique
-Noeud::Noeud ( const Trajet* _trajetAssocie, Noeud* _parent, bool _estTrajetDirect ) 
-    : estValide ( false ), estTrajetDirect ( _estTrajetDirect )
-{
-    #ifdef MAP
-        cout << "Appel au constructeur de la classe <Noeud>" << endl;
-    #endif
 
-    trajetAssocie = _trajetAssocie;
-    parent = _parent;
-    enfant = prochain = NOEUD_NULL;
-}
-
-Noeud::~Noeud ( )
-{
-    #ifdef MAP
-        cout << "Appel au destructeur de la classe <Noeud>" << endl;
-    #endif
-
-    if ( enfant != NOEUD_NULL ) delete enfant;
-    if ( prochain != NOEUD_NULL ) delete prochain;
-}
-
+// ------------- Methodes publiques
 bool Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
 {
     const char* trajetArrivee = trajet->GetVilleArrivee ( );
@@ -112,22 +92,19 @@ bool Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
     }
 
     return estAjoute;
-}
+} // Fin de Ajouter
 
 Noeud* Noeud::AjouterVoisin ( const Trajet* trajet )
 {
     Noeud* courant;
 
-    for ( courant = this; courant->prochain != NULL; courant = courant->prochain )
-    {
-        if ( trajet == trajetAssocie ) return NOEUD_NULL; // noeud deja present
-    }
+    for ( courant = this; courant->prochain != NULL; courant = courant->prochain );
 
     Noeud* noeud = new Noeud ( trajet, parent );
     courant->prochain = noeud;
 
     return noeud;
-}
+} // Fin de AjouterVoisin
 
 void Noeud::Afficher ( void ) 
 {
@@ -157,27 +134,27 @@ void Noeud::Afficher ( void )
             }       
         } 
     }
-}
+} // Fin de Afficher
 
 const bool Noeud::EstValide ( void ) const
 {
     return estValide;
-}
+} // Fin de EstValide
 
 const Noeud* Noeud::GetVoisin ( void ) const
 {
     return prochain;
-}
+} // Fin de GetVoisin
 
 void Noeud::SetEstValide ( bool _estValide ) 
 {
     estValide = _estValide;
-}
+} // Fin de SetEstValide
 
 void Noeud::SetEstTrajetDirect ( bool _estTrajetDirect ) 
 {
     estTrajetDirect = _estTrajetDirect;
-}
+} // Fin de SetEstTrajetDirect
 
 
 // ------- Partie privee
@@ -199,4 +176,27 @@ void Noeud::afficher ( void )
         trajetAssocie->Afficher ( );
         cout << " - ";
     }
-}
+} // Fin de afficher
+
+// ---------------------- Constructeur - destructeur
+Noeud::Noeud ( const Trajet* _trajetAssocie, Noeud* _parent, bool _estTrajetDirect ) 
+    : estValide ( false ), estTrajetDirect ( _estTrajetDirect )
+{
+    #ifdef MAP
+        cout << "Appel au constructeur de la classe <Noeud>" << endl;
+    #endif
+
+    trajetAssocie = _trajetAssocie;
+    parent = _parent;
+    enfant = prochain = NOEUD_NULL;
+} // Fin de Noeud (constructeur)
+
+Noeud::~Noeud ( )
+{
+    #ifdef MAP
+        cout << "Appel au destructeur de la classe <Noeud>" << endl;
+    #endif
+
+    if ( enfant != NOEUD_NULL ) delete enfant;
+    if ( prochain != NOEUD_NULL ) delete prochain;
+} // Fin de ~Noeud

@@ -9,8 +9,8 @@
 *************************************************************************/
 
 //--- Interface de la classe <TrajetCompose> (fichier TrajetCompose.h) ---
-#if ! defined ( TRAJETCOMPOSE_H )
-#define TRAJETCOMPOSE_H
+#if ! defined ( TRAJET_COMPOSE_H )
+#define TRAJET_COMPOSE_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Collection.h"
@@ -30,44 +30,46 @@ class TrajetCompose : public Trajet
 {
 //----------------------------------------------------------------- PUBLIC
 
-public:
-//-------------------------------------------- Constructeurs - destructeur
-    TrajetCompose ( Collection* uneListeTrajets );
-    // Mode d'emploi :
-    //  Construit un trajet composé en initialisant sa liste de trajets.
-    // Le parametre "uneListeTrajets" est une collection de trajets
+    public:
+    //-------------------------------------------- Constructeurs - destructeur
+        TrajetCompose ( Collection* uneListeTrajets );
+        // Mode d'emploi :
+        //  Construit un trajet composé en initialisant sa liste de trajets.
+        // Le parametre "uneListeTrajets" est une collection de trajets
+        // qui representent l'ensemble des trajets formant le trajet compose.
 
-    virtual ~TrajetCompose ( );
-    // Mode d'emploi :
-    //  Détruit en profondeur le trajet simple. (La liste des trajets)
-//----------------------------------------------------- Méthodes publiques
-    void    Afficher() const;
-    // Mode d'emploi :
-    //  Affiche les caractéristiques du voyage. Cette méthode est présente dans la classe 
-    // mère <Trajet> mais elle a l'obligation d'etre redefinie.
+        virtual ~TrajetCompose ( );
+        // Mode d'emploi :
+        //  Détruit en profondeur le trajet compose (La liste des trajets).
 
-    const char    *GetVilleDepart() const;
-    // Mode d'emploi :
-    //  Renvoie un pointeur sur la ville de départ du trajet (pas de copie).
-    // Cette méthode est présente dans la classe 
-    // mère <Trajet> mais elle a l'obligation d'etre redefinie.
+        //----------------------------------------------------- Méthodes publiques
+        void Afficher() const;
+        // Mode d'emploi :
+        //  Affiche les caractéristiques du voyage. Cette méthode est présente dans la classe 
+        // mère <Trajet> mais elle a l'obligation d'etre redefinie.
 
-    const char    *GetVilleArrivee() const;
-    // Mode d'emploi :
-    //  Renvoie un pointeur sur la ville d'arrivée du trajet (pas de copie).
-    // Cette méthode est présente dans la classe 
-    // mère <Trajet> mais elle a l'obligation d'etre redefinie.
+        const char* GetVilleDepart() const;
+        // Mode d'emploi :
+        //  Renvoie un pointeur sur la ville de départ du trajet (pas de copie).
+        // Cette méthode est présente dans la classe 
+        // mère <Trajet> mais elle a l'obligation d'etre redefinie.
 
-//------------------------------------------------------------------ PRIVE
+        const char* GetVilleArrivee() const;
+        // Mode d'emploi :
+        //  Renvoie un pointeur sur la ville d'arrivée du trajet (pas de copie).
+        // Cette méthode est présente dans la classe 
+        // mère <Trajet> mais elle a l'obligation d'etre redefinie.
 
-protected:
-//----------------------------------------------------- Méthodes protégées
+        //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Attributs protégés
-    Collection*  listeTrajets;
+        protected:
+        //----------------------------------------------------- Méthodes protégées
+
+        //----------------------------------------------------- Attributs protégés
+        Collection*  listeTrajets;
 };
 
 //----------------------- Autres définitions dépendantes de <TrajetCompose>
 
-#endif // TRAJETCOMPOSE_H
+#endif // TRAJET_COMPOSE_H
 

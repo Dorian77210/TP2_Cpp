@@ -23,7 +23,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void    TrajetCompose::Afficher ( ) const
+void TrajetCompose::Afficher ( ) const
 {
 	unsigned int    taille;
     unsigned int    i;
@@ -34,18 +34,18 @@ void    TrajetCompose::Afficher ( ) const
         listeTrajets->GetTrajet(i)->Afficher();
         if (i != ( taille - 1 ) ) cout << " - ";
     }
-}
+} // Fin de Afficher
 
 
-const char    *TrajetCompose::GetVilleDepart ( ) const
+const char *TrajetCompose::GetVilleDepart ( ) const
 {
 	return (listeTrajets->GetTrajet(0)->GetVilleDepart());
-}
+} // Fin de GetVilleDepart
 
-const char    *TrajetCompose::GetVilleArrivee ( ) const
+const char *TrajetCompose::GetVilleArrivee ( ) const
 {
 	return (listeTrajets->GetTrajet(listeTrajets->GetTaille() - 1)->GetVilleArrivee());
-}
+} // Fin de GetVilleArrivee
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -55,7 +55,7 @@ TrajetCompose::TrajetCompose ( Collection* uneListeTrajets )
         cout << "Appel au constructeur de <TrajetCompose> : ";
     #endif
     listeTrajets = uneListeTrajets;
-} //----- Fin de TrajetCompose
+} //----- Fin de TrajetCompose (constructeur)
 
 
 TrajetCompose::~TrajetCompose ( )
@@ -65,10 +65,4 @@ TrajetCompose::~TrajetCompose ( )
     #endif
 
     delete listeTrajets;
-} //----- Fin de ~TrajetCompose
-
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
-
+} //----- Fin de ~TrajetCompose (destructeur)

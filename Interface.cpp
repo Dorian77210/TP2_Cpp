@@ -20,22 +20,6 @@ using namespace std;
 #include "TrajetSimple.h"
 #include "TrajetCompose.h"
 
-// ---------------- Constructeurs - destructeur
-Interface::Interface ( void ) 
-    : catalogue ( )
-{
-    #ifdef MAP
-        cout << "Appel au constructeur de la classe <Interface>" << endl;
-    #endif
-}
-
-Interface::~Interface ( )
-{
-    #ifdef MAP
-        cout << "Appel au destructeur de la classe <Interface>" << endl;
-    #endif
-}
-
 // -------------- Méthodes publiques
 void Interface::Run ( void ) 
 {
@@ -57,17 +41,17 @@ void Interface::Run ( void )
             cin.ignore(MAX_STREAM, '\n');
         }
     }
-}
+} // Fin de Run
 
 // ------------- Méthodes protégées
-void Interface::afficherInterface ( void ) const 
+void Interface::afficherMenu ( void ) const 
 {
     cout << "Option 1 : Ajouter un trajet" << endl;
     cout << "Option 2 : Afficher le catalogue" << endl;
     cout << "Option 3 : Rechercher un parcours" << endl;
     cout << "Option 4 : Quitter application" << endl;
     cout << "Choisissez l'option qui vous convient : ";
-}
+} // Fin de afficherInterface
 
 void Interface::rechercherTrajet ( void ) const
 {
@@ -100,7 +84,7 @@ void Interface::rechercherTrajet ( void ) const
 
     delete [] arrivee;
     delete [] depart;
-}
+} // Fin de rechercherTrajet
 
 void Interface::ajouterTrajet ( void ) 
 {
@@ -201,9 +185,25 @@ void Interface::ajouterTrajet ( void )
     delete [] moyenTransport;
 
     catalogue.Ajouter ( trajet );
-}
+} // fin de ajouterTrajet
 
 void Interface::afficherCatalogue ( void ) const
 {
     catalogue.Afficher ( );
-}
+} // fin de afficherCatalogue
+
+// ---------------- Constructeurs - destructeur
+Interface::Interface ( void ) 
+    : catalogue ( )
+{
+    #ifdef MAP
+        cout << "Appel au constructeur de la classe <Interface>" << endl;
+    #endif
+} // fin de Interface (constructeur par defaut)
+
+Interface::~Interface ( )
+{
+    #ifdef MAP
+        cout << "Appel au destructeur de la classe <Interface>" << endl;
+    #endif
+} // Fin de ~Interface

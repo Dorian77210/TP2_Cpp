@@ -16,23 +16,6 @@ using namespace std;
 // --------- Include personnel
 #include "Trajet.h"
 
-// ----------------- Constructeurs - destructeur
-Trajet::Trajet ( ) 
-{
-    #ifdef MAP
-        cout << "Appel au constructeur de la classe <Trajet>" << endl;
-    #endif
-}
-
-Trajet::~Trajet ( ) 
-{
-    #ifdef MAP
-        cout << "Appel au destructeur de la classe <Trajet>" << endl;
-    #endif
-}
-
-
-
 // ---------------- Methodes publiques
 bool Trajet::EstValide ( const char* _depart, const char* _arrivee ) const
 {
@@ -40,4 +23,19 @@ bool Trajet::EstValide ( const char* _depart, const char* _arrivee ) const
     const char* arrivee = GetVilleArrivee ( );
 
     return ( strcmp ( arrivee, _arrivee ) && strcmp ( depart, _depart ) ) == 0;
-}
+} // Fin de EstValide
+
+// ----------------- Constructeurs - destructeur
+Trajet::Trajet ( ) 
+{
+    #ifdef MAP
+        cout << "Appel au constructeur de la classe <Trajet>" << endl;
+    #endif
+} // Fin de Trajet (constructeur par defaut de la classe Trajet)
+
+Trajet::~Trajet ( ) 
+{
+    #ifdef MAP
+        cout << "Appel au destructeur de la classe <Trajet>" << endl;
+    #endif
+} // Fin de ~Trajet (destructeur)

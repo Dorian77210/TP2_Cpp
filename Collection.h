@@ -60,4 +60,4 @@ class Collection
         Trajet const ** trajets;
 };
 
-#endif
+#endif // COLLECTION_H

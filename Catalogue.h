@@ -61,4 +61,4 @@ class Catalogue
         Collection* collectionTrajets;
 };
 
-#endif
+#endif // CATALOGUE_H

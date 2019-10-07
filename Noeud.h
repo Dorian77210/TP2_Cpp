@@ -2,7 +2,9 @@
                            Noeud.h  -  Interface de la classe Noeud
                             La classe <Noeud> est une classe qui servira
                             lors d'une recherche approfondi des trajets
-                            disponibles 
+                            disponibles. Cette classe est uniquement
+                            utilisé dans le cadre de la recherche complexe
+                            de trajets.
                              -------------------
     début                : 03/10/2019
     copyright            : (C) 2019 par Dorian TERBAH
@@ -40,15 +42,17 @@ class Noeud
         // La methode "Ajouter" permet de d'ajouter un trajet dans l'arborescence
         // Le parametre "trajet" represente le trajet a ajouter
         // le parametre "arrivee" permet de savoir si on a atteint la fin d'une branche ou non
-        // Elle renvoit "true" si le trajet a ete ajoute, false sinon
+        // Elle renvoit "true" si le trajet a ete ajoute à l'arbre des possibilites, false sinon
 
         Noeud* AjouterVoisin ( const Trajet* trajet );
         // La methode "AjouterNoeud" permet d'ajouter un noeud en fin de liste chainee (CF. voisin)
         // Le parametre "noeud" represente le nouveau noeud a ajouter
-        // Cette methode renvoit le voisin ajoute
+        // Cette methode renvoit le nouveau noeud ajouté.
 
         const Noeud* GetVoisin ( void ) const;
-        // La methode "GetVosin" permet de recuperer le maillon suivant du noeud courant
+        // La methode "GetVosin" permet de recuperer le maillon suivant du noeud courant.
+        // Cette méthode est utilisée pour savoir si un arbre de recherche contient ou non
+        // des possibilités de trajets
 
         void Afficher ( void );
         // La methode "Afficher" permet d'afficher un trajet de maniere recursive
@@ -68,7 +72,8 @@ class Noeud
     private:
         // ------ Methodes privees
         void afficher ( void );
-        // Methode qui permet d'afficher une branche d'un arbre
+        // Methode qui permet d'afficher une branche d'un arbre en remontant de parent en parent.
+        // Cette méthode utilise la récursivité.
 
         Noeud* parent;
         Noeud* enfant;
@@ -76,6 +81,6 @@ class Noeud
         bool estValide;
         bool estTrajetDirect;
         const Trajet* trajetAssocie;
-};
+}; 
 
-#endif
+#endif // NOEUD_H

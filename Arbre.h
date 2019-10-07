@@ -58,4 +58,4 @@ class Arbre
         Noeud* base;
 };
 
-#endif
+#endif // ARBRE_H

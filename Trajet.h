@@ -1,7 +1,7 @@
 /*************************************************************************
                            Trajet.h  -  Interface de la classe Trajet
                             La classe <Trajet> est une classe qui represente un parcours
-                            et qui sert de base pour les trajets simples et 
+                            et qui sert de classe mère pour les trajets simples et 
                             composés.                           
                              -------------------
     début                : 03/10/2019
@@ -12,9 +12,6 @@
 //------------------ Interface de la classe <Trajet> (fichier Trajet.h)----------
 #if ! defined ( TRAJET_H )
 #define TRAJET_H
-
-// La classe a pour rôle de représenter un trajet. Elle sert de classe mère pour les
-// classes <TrajetSimple> et <TrajetCompose>
 
 class Trajet 
 {
@@ -31,15 +28,18 @@ class Trajet
         //------------------------------- Méthodes publiques
         virtual void Afficher ( ) const = 0;
         // La méthode "Afficher" permet d'afficher le trajet 
-        // Cette methode a obligation d'etre redefinie dans les classes enfants
+        // Cette methode a obligation d'etre redefinie dans les classes enfants 
+        // (Dans les classes <TrajetSimple> et <TrajetCompose>)
 
         virtual const char* GetVilleDepart ( ) const = 0;
         // La methode "GetVilleDepart" permet de recuperer la ville de depart du trajet
-        // Cette methode a obligation d'etre redefinie dans les classes enfants
+        // Cette methode a obligation d'etre redefinie dans les classes enfants.
+        // (Dans les classes <TrajetSimple> et <TrajetCompose>)
         
         virtual const char* GetVilleArrivee ( ) const = 0;
         // La methode "GetVilleArrivee"  permet de recuperer la ville d'arrivee du trajet
-        // Cette methode a obligation d'etre redefinie dans les classes enfants
+        // Cette methode a obligation d'etre redefinie dans les classes enfants.
+        // (Dans les classes <TrajetSimple> et <TrajetCompose>)
 
         bool EstValide ( const char* _depart, const char* arrive ) const;
         // La methode "EstValide" permet de verifier que le trajet courant est cohérent
@@ -48,4 +48,4 @@ class Trajet
         // Le parametre "_arriveee" represente l'arrivee desirée
 };
 
-#endif
+#endif // TRAJET_H
