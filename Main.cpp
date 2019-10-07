@@ -1,11 +1,11 @@
 
 #include <iostream>
 
-#include "Menu.h"
+#include "Interface.h"
 
 int main(int argc, const char** argv) 
 {
-    Menu menu;
-    menu.Run ( );
+    Interface interface;
+    interface.Run ( );
     return 0;
 }
