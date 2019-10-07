@@ -25,6 +25,7 @@ const unsigned int TRAJET_SIMPLE_OPTION = 1;
 const unsigned int TRAJET_COMPOSE_OPTION = 2;
 
 const unsigned int MAX_TAILLE_STRING = 64;
+const unsigned int MAX_STREAM = 2147483647;
 
 class Interface 
 {
