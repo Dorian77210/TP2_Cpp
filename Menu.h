@@ -61,7 +61,7 @@ class Menu
         // de trajets
 
     private:
-        Catalogue* catalogue;
+        Catalogue catalogue;
 };
 
 #endif

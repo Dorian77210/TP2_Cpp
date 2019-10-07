@@ -70,7 +70,13 @@ void Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
             } else
             {
                 Noeud* voisin = enfant->AjouterVoisin ( trajet );
-                voisin->estValide = true;
+                if ( voisin == NOEUD_NULL )
+                {
+                    // le trajet existe deja dans les voisins
+                    return;
+                }
+                
+                voisin->estValide = true; 
             }
         } else
         {
