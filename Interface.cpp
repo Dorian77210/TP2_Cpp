@@ -28,7 +28,7 @@ void Interface::Run ( void )
 
     while ( loop ) 
     {
-        afficherInterface ( );
+        afficherMenu ( );
         cin >> choix;
 
         if( choix == AFFICHAGE_CATALOGUE ) catalogue.Afficher ( );
