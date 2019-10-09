@@ -33,9 +33,6 @@ bool Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
 
     bool estAjoute = false;
 
-    trajetAssocie->Afficher ( );
-    cout << endl;
-
     if ( enfant != NOEUD_NULL ) estAjoute = estAjoute || enfant->Ajouter ( trajet, arrivee );
     if ( prochain != NOEUD_NULL ) estAjoute = estAjoute || prochain->Ajouter ( trajet, arrivee );
     if ( strcmp ( trajetArrivee, arrivee ) == 0 ) 
@@ -100,7 +97,7 @@ Noeud* Noeud::AjouterVoisin ( const Trajet* trajet )
 {
     Noeud* courant;
 
-    for ( courant = this; courant->prochain != NULL; courant = courant->prochain );
+    for ( courant = this; courant->prochain != NOEUD_NULL; courant = courant->prochain );
 
     Noeud* noeud = new Noeud ( trajet, parent );
     courant->prochain = noeud;
@@ -110,10 +107,8 @@ Noeud* Noeud::AjouterVoisin ( const Trajet* trajet )
 
 void Noeud::Afficher ( void ) 
 {
-    // Algorithme recursif
-    // affichage pour les voisins
-    Noeud* noeud = this;
-
+    // Algorithme recursif pour afficher les trajets valides
+    Noeud* noeud;
     for ( noeud = this; noeud != NOEUD_NULL; noeud = noeud->prochain )
     {
         if ( noeud->estValide ) 
@@ -122,18 +117,17 @@ void Noeud::Afficher ( void )
             {
                 noeud->trajetAssocie->Afficher ( );
                 cout << endl;
-                return;
+            } else {
+                 if ( noeud->enfant != NOEUD_NULL ) 
+                {
+                    noeud->enfant->Afficher ( );
+                } 
+                else
+                {
+                    // on arrive en fin de branche
+                    noeud->afficher ( );
+                }   
             }
-
-            if ( noeud->enfant != NOEUD_NULL ) 
-            {
-                noeud->enfant->Afficher ( );
-            } 
-            else
-            {
-                // on arrive en fin de branche
-                noeud->afficher ( );
-            }       
         } 
     }
 } // Fin de Afficher

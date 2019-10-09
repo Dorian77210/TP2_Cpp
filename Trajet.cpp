@@ -22,7 +22,7 @@ bool Trajet::EstValide ( const char* _depart, const char* _arrivee ) const
     const char* depart = GetVilleDepart ( );
     const char* arrivee = GetVilleArrivee ( );
 
-    return ( strcmp ( arrivee, _arrivee ) && strcmp ( depart, _depart ) ) == 0;
+    return ( strcmp ( arrivee, _arrivee ) == 0 && strcmp ( depart, _depart ) == 0 );
 } // Fin de EstValide
 
 // ----------------- Constructeurs - destructeur
