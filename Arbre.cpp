@@ -40,7 +40,6 @@ void Arbre::RechercherTrajetsPossibles ( const Catalogue* catalogue, const char*
             if ( base == NOEUD_NULL ) 
             {
                 base = new Noeud ( trajet );
-                voisin = base;
             } else
             {
                 voisin = base->AjouterVoisin ( trajet );

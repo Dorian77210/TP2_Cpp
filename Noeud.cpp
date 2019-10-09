@@ -33,9 +33,11 @@ bool Noeud::Ajouter ( const Trajet* trajet, const char* arrivee )
 
     bool estAjoute = false;
 
+    trajetAssocie->Afficher ( );
+    cout << endl;
+
     if ( enfant != NOEUD_NULL ) estAjoute = estAjoute || enfant->Ajouter ( trajet, arrivee );
     if ( prochain != NOEUD_NULL ) estAjoute = estAjoute || prochain->Ajouter ( trajet, arrivee );
-
     if ( strcmp ( trajetArrivee, arrivee ) == 0 ) 
     {
         // on arrive en fin de branche, cette branche est donc un trajet possible

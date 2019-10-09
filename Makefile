@@ -5,7 +5,7 @@ CFLAGS = -Wall \
 		 -ansi \
 		 -pedantic \
 		 -std=c++11 \
-		#  -DMAP \
+		 -DMAP \
 		 
 EXE = main
 OFILES = Main.o \
@@ -35,7 +35,7 @@ Catalogue.o: Catalogue.cpp Catalogue.h Trajet.h TrajetCompose.h TrajetSimple.h C
 Collection.o: Collection.cpp Collection.h Trajet.h
 	$(G) $(CFLAGS) -c Collection.cpp
 
-Main.o: Main.cpp Catalogue.h
+Main.o: Main.cpp Interface.h
 	$(G) $(CFLAGS) -c Main.cpp
 
 Interface.o: Interface.cpp Interface.h Catalogue.h Trajet.h TrajetSimple.h TrajetCompose.h Collection.h
