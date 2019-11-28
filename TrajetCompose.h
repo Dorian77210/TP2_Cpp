@@ -60,6 +60,10 @@ class TrajetCompose : public Trajet
         // Cette méthode est présente dans la classe 
         // mère <Trajet> mais elle a l'obligation d'etre redefinie.
 
+        inline bool EstSimple() const { return false; }
+        // Mode d'emploi :
+        //  Renvoie false car c'est un trajet simple.
+
         //------------------------------------------------------------------ PRIVE
 
         protected:

@@ -59,6 +59,10 @@ public:
     // Cette méthode est présente dans la classe 
     // mère <Trajet> mais elle a l'obligation d'etre redefinie.
 
+    inline bool EstSimple() const { return true; }
+    // Mode d'emploi :
+    //  Renvoie true car c'est un trajet simple.
+
 //------------------------------------------------------------------ PRIVE
 
 protected:

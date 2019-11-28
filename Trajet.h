@@ -46,6 +46,9 @@ class Trajet
         // avec un depart et une arrivee
         // Le parametre "_depart" represente le depart desiré
         // Le parametre "_arriveee" represente l'arrivee desirée
+
+        virtual bool EstSimple ( ) const = 0;
+        // Sert à savoir si le trajet est simple
 };
 
 #endif // TRAJET_H

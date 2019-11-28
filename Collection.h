@@ -45,6 +45,10 @@ class Collection
         // Permet de recuperer la taille de la collection. Cette méthode peut 
         // être utilisée pour itérer sur les trajets par exemple.
 
+        unsigned int GetNbTrajetsSimples ( ) const;
+        // Permet de recuperer le nombre de trajets simples contenus dans la collection de 
+        // la collection.
+
     //----------------------- PARTIE PRIVEE
     private:
         //--------------- Méthodes privées
@@ -58,6 +62,7 @@ class Collection
         unsigned int tailleMax;
         unsigned int tailleCourante;
         Trajet const ** trajets;
+        unsigned int nbTrajetsSimples;
 };
 
 #endif // COLLECTION_H

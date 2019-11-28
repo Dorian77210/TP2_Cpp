@@ -14,6 +14,7 @@ using namespace std;
 // -------- Include personnel
 #include "Collection.h"
 #include "Trajet.h"
+#include "TrajetSimple.h"
 
 // -------- Partie publique
 
@@ -28,6 +29,9 @@ void Collection::Ajouter ( const Trajet* trajet )
 
     trajets [ tailleCourante ] = trajet;
     tailleCourante++;
+   
+    if (trajet->EstSimple())
+        nbTrajetsSimples++;
 } // Fin de Ajouter
 
 const Trajet* Collection::GetTrajet ( unsigned int index ) const
@@ -39,6 +43,11 @@ unsigned int Collection::GetTaille ( ) const
 { 
     return tailleCourante;
 } // Fin de GetTaille
+
+unsigned int Collection::GetNbTrajetsSimples( ) const 
+{ 
+    return nbTrajetsSimples;
+} // Fin de GetNbTrajetsSimples
 
 // -------------- Méthodes privées
 void Collection::reajuster ( ) 
@@ -59,7 +68,7 @@ void Collection::reajuster ( )
 
 // ----------------- Constructeurs - destructeur
 Collection::Collection ( unsigned int _tailleMax ) 
-    : tailleMax ( _tailleMax ), tailleCourante ( 0 )
+    : tailleMax ( _tailleMax ), tailleCourante ( 0 ), nbTrajetsSimples(0)
 {
     #ifdef MAP
         cout << "Appel au constructeur de la classe <Collection>" << endl;

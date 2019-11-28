@@ -21,10 +21,11 @@ using namespace std;
 // ------------ Méthodes publiques
 void Catalogue::Afficher ( ) const 
 {
-    unsigned int i, tailleCollection;
+    unsigned int i, tailleCollection, nbTrajetsSimples;
     const Trajet* trajet;
 
     tailleCollection = collectionTrajets->GetTaille ( );
+    nbTrajetsSimples = collectionTrajets->GetNbTrajetsSimples ( );
 
     if ( tailleCollection == 0 ) 
     {
@@ -33,6 +34,9 @@ void Catalogue::Afficher ( ) const
         return;
     }
 
+    cout << "Taille du catalogue : " << tailleCollection << endl;
+    cout << "Nombre de trajets simples : " << nbTrajetsSimples << endl;
+    cout << "Nombre de trajets composés : " << tailleCollection - nbTrajetsSimples << endl;
     for ( i = 0; i < tailleCollection; i++ ) 
     {
         trajet = collectionTrajets->GetTrajet ( i );
